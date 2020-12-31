@@ -68,7 +68,7 @@ export interface GetChannelRequest {
  */
 export interface GetChannelListRequest
   extends FilteredListRequest,
-  PagedListRequest { }
+    PagedListRequest {}
 
 /**
  * POST /video
@@ -95,7 +95,7 @@ export interface GetVideoRequest {
  */
 export interface GetVideoListRequest
   extends FilteredListRequest,
-  PagedListRequest { }
+    PagedListRequest {}
 
 // TODO:
 // PUT /channel
