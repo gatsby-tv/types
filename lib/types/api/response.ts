@@ -1,6 +1,6 @@
-// import { IChannel } from "./entities/Channel";
-// import { IVideo } from "./entities/Video";
-import { WestEggError } from "../errors";
+import { IChannel } from "./entities/channel";
+import { IVideo } from "./entities/video";
+import { WestEggError } from "./errors";
 
 // Response types
 
@@ -40,35 +40,37 @@ export interface LoginResponse extends AuthenticatedResponse {}
 /**
  * POST /channel
  */
-// export interface CreateChannelResponse extends IChannel {}
+export interface CreateChannelResponse extends IChannel {}
 
 /**
  * GET /channel
  */
-// export interface GetChannelResponse extends IChannel {}
+export interface GetChannelResponse extends IChannel {}
 
 /**
  * GET /channel/list
  */
 export interface GetChannelListResponse extends PagedListResponse {
-  // channels: IChannel[];
+  channels: IChannel[];
 }
 
 /**
  * POST /video
  */
-// export interface UploadVideoResponse extends IVideo {}
+export interface UploadVideoResponse extends IVideo {}
 
 /**
  * GET /video
  */
-// export interface GetVideoResponse extends IVideo {}
+export interface GetVideoResponse extends IVideo {
+  channel: IChannel;
+}
 
 /**
  * GET /video/list
  */
 export interface GetVideoListResponse extends PagedListResponse {
-  // videos: IVideo[];
+  videos: IVideo[];
 }
 
 // // TODO:
