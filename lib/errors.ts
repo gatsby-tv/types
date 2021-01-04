@@ -19,8 +19,7 @@ export enum ErrorCode {
   HANDLE_OR_EMAIL_REQUIRED = "HANDLE_OR_EMAIL_REQUIRED",
   INVALID_CREDENTIALS = "INVALID_CREDENTIALS",
 
-  // Validation errors
-  // Email
+  // Email Validation errors
   EMAIL_IN_USE = "EMAIL_IN_USE",
   EMAIL_OUT_OF_RANGE = "EMAIL_OUT_OF_RANGE",
   INVALID_EMAIL = "INVALID_EMAIL",
