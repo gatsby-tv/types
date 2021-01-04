@@ -1,13 +1,11 @@
 import {
   AccountInfo,
-  AdminSettings,
   Bookmarks,
   CID,
   CategoryInfo,
   ChannelID,
   ContentInfo,
   Contributions,
-  ModeratorSettings,
   ObjectID,
   PlaylistID,
   ReceivedInvites,
@@ -18,7 +16,12 @@ import {
   VideoID,
 } from "@lib/types";
 import { Report } from "@lib/report";
-import { UserSettings, ChannelSettings } from "@lib/settings";
+import {
+  UserSettings,
+  ChannelSettings,
+  AdminSettings,
+  ModeratorSettings,
+} from "@lib/settings";
 
 export interface IToken {
   readonly _id: ObjectID;

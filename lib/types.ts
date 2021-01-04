@@ -1,5 +1,3 @@
-import { AdminPermissions, ContentPermissions } from "@lib/permissions";
-
 export type ObjectID = string;
 export type UserID = ObjectID;
 export type ChannelID = ObjectID;
@@ -41,24 +39,6 @@ export interface ContentInfo extends CategoryInfo {
   collaborators: Set<UserID>;
   thumbnail: IPFSContent;
 }
-
-export type AdminSettings = {
-  [user: string]: {
-    public: boolean;
-    permissions: Set<AdminPermissions>;
-  };
-};
-
-export type ModerationSettings<T extends ContentPermissions | null = null> = {
-  [content: string]: Set<T extends ContentPermissions ? T : ContentPermissions>;
-};
-
-export type ModeratorSettings<T extends ContentPermissions | null = null> = {
-  [user: string]: {
-    public: boolean;
-    moderations: ModerationSettings<T>;
-  };
-};
 
 export type Contributions = {
   [user: string]: Set<string>;
