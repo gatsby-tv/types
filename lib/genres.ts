@@ -1,6 +1,5 @@
 export enum Genres {
   Analysis = "Analysis",
-  Apology = "Apology",
   Clip = "Clip",
   Collaboration = "Collaboration",
   Commentary = "Commentary",
