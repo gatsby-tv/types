@@ -1,5 +1,7 @@
 export * from "./types";
 export * from "./entities";
+export * from "./topics";
+export * from "./genres";
 export * from "./utilities";
 export * from "./responses";
 export * from "./requests";
