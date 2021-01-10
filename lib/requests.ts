@@ -9,72 +9,108 @@ import {
   IEpisodicShow,
   IPlaylist,
 } from "@lib/entities";
-import { CID, ChannelID, UserID, VideoID } from "@lib/types";
 import { Report } from "@lib/report";
+import { CID, ChannelID, UserID, VideoID } from "@lib/shared";
+import { AdminPermissions } from "@lib/permissions";
 import {
   UserSettings,
   ChannelSettings,
-  AdminSettings,
-  ModeratorSettings,
+  ModerationSettings,
 } from "@lib/settings";
 
 /*
  * POST /auth/signup
+ *
+ * Requires authorization.
+ *
+ * Request to create a new user from the specified handle and display name.
+ * In addition, the request allows for an avatar to be submitted via multipart/form-data.
  */
-export type SignupRequest = {
-  email: string;
-  password: [string, string];
-  account: Pick<IUserAccount, "handle" | "name">;
-};
-
-export type LoginHandleRequest = {
-  handle: string;
-  password: string;
-};
-
-export type LoginEmailRequest = {
-  email: string;
-  password: string;
-};
+export type PostAuthSignupRequest = Pick<
+  IUserAccount,
+  "_id" | "handle" | "name"
+>;
 
 /*
- * POST /auth/login
+ * GET /auth/user/:id
+ *
+ * Requires authorization.
  */
-export type LoginRequest = LoginHandleRequest | LoginEmailRequest;
+export type GetAuthUserRequest = Pick<IUserAccount, "_id">;
+
+/*
+ * GET /auth/user/:id/exists
+ */
+export type GetAuthUserExistsRequest = Record<string, never>;
+
+/*
+ * GET /auth/user/handle/:handle/exists
+ */
+export type GetAuthUserHandleExistsRequest = Record<string, never>;
+
+/*
+ * GET /auth/channel/handle/:handle/exists
+ */
+export type GetAuthChannelHandleExistsRequest = Record<string, never>;
 
 //
 // User Requests
 // --------------------------------------------------
 
 /*
- * GET /user/:handle
+ * GET /user/{:id,:handle}
  */
-export type GetUserAccountRequest = {};
+export type GetUserAccountRequest = Record<string, never>;
 
 /*
  * GET /user/:handle/public
  */
-export type GetUserPublicRequest = {};
+export type GetUserPublicRequest = Record<string, never>;
 
 /*
  * GET /user/:handle/private
  */
-export type GetUserPrivateRequest = {};
+export type GetUserPrivateRequest = Record<string, never>;
 
 /*
  * GET /user/:handle/feeds
  */
-export type GetUserFeedsRequest = {};
+export type GetUserFeedsRequest = Record<string, never>;
 
 /*
- * PUT /user/:handle
+ * GET /user/:id/history
+ */
+export type GetUserHistoryRequest = Record<string, never>;
+
+/*
+ * GET /user/:id/promotions
+ */
+export type GetUserPromotionsRequest = Record<string, never>;
+
+/*
+ * PUT /user/:id
  */
 export type PutUserRequest = Partial<
-  Pick<IUserAccount, "avatar" | "handle" | "name" | "description">
+  Pick<IUserAccount, "name" | "description">
 >;
 
 /*
- * PUT /user/:handle/subscription
+ * PUT /user/:id/handle
+ */
+export type PutUserHandleRequest = Record<string, never>;
+
+/*
+ * PUT /user/:id/avatar
+ */
+export type PutUserAvatarRequest = Record<string, never>;
+
+/*
+ * PUT /user/:id/banner
+ */
+export type PutUserBannerRequest = Record<string, never>;
+
+/*
+ * PUT /user/:id/subscription
  */
 export type PutUserSubscriptionRequest = {
   subscription: ChannelID;
@@ -96,7 +132,12 @@ export type PutUserHistoryRequest = {
 };
 
 /*
- * PUT /user/:handle/settings
+ * PUT /user/:id/promotion
+ */
+export type PutUserPromotionRequest = { video: VideoID };
+
+/*
+ * PUT /user/:id/settings
  */
 export type PutUserSettingsRequest = { settings: Array<UserSettings> };
 
@@ -123,7 +164,7 @@ export type PutUserModerationAcceptRequest = { channel: ChannelID };
 /*
  * DELETE /user/:handle
  */
-export type DeleteUserRequest = {};
+export type DeleteUserRequest = Record<string, never>;
 
 /*
  * DELETE /user/:handle/subscription
@@ -143,7 +184,12 @@ export type DeleteUserHistoryRequest = { video: VideoID };
 /*
  * DELETE /user/:handle/history/all
  */
-export type DeleteUserEntireHistoryRequest = {};
+export type DeleteUserEntireHistoryRequest = Record<string, never>;
+
+/*
+ * DELETE /user/:id/promotion
+ */
+export type DeleteUserPromotionRequest = { video: VideoID };
 
 /*
  * DELETE /user/:handle/collaboration
@@ -189,32 +235,52 @@ export type PostChannelRequest = Pick<IChannelAccount, "handle" | "name"> & {
 /*
  * GET /channel/:handle
  */
-export type GetChannelAccountRequest = {};
+export type GetChannelAccountRequest = Record<string, never>;
 
 /*
  * GET /channel/:handle/public
  */
-export type GetChannePublicRequest = {};
+export type GetChannePublicRequest = Record<string, never>;
 
 /*
  * GET /channel/:handle/private
  */
-export type GetChannelPrivateRequest = {};
+export type GetChannelPrivateRequest = Record<string, never>;
 
 /*
  * GET /channel/:handle/content
  */
-export type GetChannelContentRequest = {};
+export type GetChannelContentRequest = Record<string, never>;
 
 /*
  * PUT /channel/:handle
  */
 export type PutChannelRequest = Partial<
-  Pick<IChannelAccount, "avatar" | "handle" | "name" | "description">
+  Pick<IChannelAccount, "name" | "description">
 >;
 
 /*
- * PUT /channel/:handle/settings
+ * PUT /channel/:id/handle
+ */
+export type PutChannelHandleRequest = Record<string, never>;
+
+/*
+ * PUT /channel/:id/avatar
+ */
+export type PutChannelAvatarRequest = Record<string, never>;
+
+/*
+ * PUT /channel/:id/banner
+ */
+export type PutChannelBannerRequest = Record<string, never>;
+
+/*
+ * PUT /channel/:id/poster
+ */
+export type PutChannelPosterRequest = Record<string, never>;
+
+/*
+ * PUT /channel/:id/settings
  */
 export type PutChannelSettingsRequest = { settings: Array<ChannelSettings> };
 
@@ -233,7 +299,9 @@ export type PutChannelCollaboratorInviteRequest = {
 /*
  * PUT /channel/:handle/contributor/invite
  */
-export type PutChannelContributorInviteRequest = { contributors: Array<UserID> };
+export type PutChannelContributorInviteRequest = {
+  contributors: Array<UserID>;
+};
 
 /*
  * PUT /channel/:handle/contributor/roles
@@ -253,7 +321,7 @@ export type PutChannelAdminInviteRequest = { admins: Array<UserID> };
  */
 export type PutChannelAdminSettingsRequest = {
   admin: UserID;
-  settings: AdminSettings[string];
+  permissions: Array<AdminPermissions>;
 };
 
 /*
@@ -266,7 +334,7 @@ export type PutChannelModeratorInviteRequest = { moderators: Array<UserID> };
  */
 export type PutChannelModeratorSettingsRequest = {
   moderator: UserID;
-  settings: ModeratorSettings[string];
+  moderations: ModerationSettings;
 };
 
 /*
@@ -334,7 +402,7 @@ export type PostVideoRequest = Omit<
 /*
  * GET /video/:id
  */
-export type GetVideoRequest = {};
+export type GetVideoRequest = Record<string, never>;
 
 /*
  * PUT /video/:id
@@ -346,7 +414,7 @@ export type PutVideoRequest = Partial<
 /*
  * PUT /video/:id/view
  */
-export type PutVideoViewRequest = {};
+export type PutVideoViewRequest = Record<string, never>;
 
 /*
  * PUT /video/:id/content
@@ -366,7 +434,7 @@ export type PutVideoReportRequest = {
 /*
  * DELETE /video/:id
  */
-export type DeleteVideoRequest = {};
+export type DeleteVideoRequest = Record<string, never>;
 
 //
 // Show Requests
@@ -388,7 +456,7 @@ export type PostShowEpisodeRequest = {
 /*
  * GET /show/:id
  */
-export type GetShowRequest = {};
+export type GetShowRequest = Record<string, never>;
 
 /*
  * PUT /show/:id
@@ -418,7 +486,7 @@ export type PutShowContentRequest =
 /*
  * DELETE /show/:id
  */
-export type DeleteShowRequest = {};
+export type DeleteShowRequest = Record<string, never>;
 
 //
 // Playlist Requests
@@ -435,7 +503,7 @@ export type PostPlaylistRequest = Omit<
 /*
  * GET /playlist/:id
  */
-export type GetPlaylistRequest = {};
+export type GetPlaylistRequest = Record<string, never>;
 
 /*
  * PUT /playlist/:id
@@ -445,11 +513,45 @@ export type PutPlaylistRequest = Partial<
 >;
 
 /*
- * DELETE /playlist/:id
+ * PUT /playlist/:id/content
  */
-export type DeletePlaylistRequest = {};
+export type PutPlaylistContentRequest = Pick<IPlaylist, "videos">;
 
 /*
- * DELETE /playlist/:id/video
+ * DELETE /playlist/:id
  */
-export type DeletePlaylistVideoRequest = { videos: Array<VideoID> };
+export type DeletePlaylistRequest = Record<string, never>;
+
+//
+// Listing Requests
+// --------------------------------------------------
+
+/*
+ * GET /listing/featured/channels
+ */
+export type GetListingFeaturedChannelsRequest = Record<string, never>;
+
+/*
+ * GET /listing/videos/recommended
+ */
+export type GetListingRecommendedVideosRequest = Record<string, never>;
+
+/*
+ * GET /listing/videos/popular
+ */
+export type GetListingPopularVideosRequest = Record<string, never>;
+
+/*
+ * GET /listing/videos/new
+ */
+export type GetListingNewVideosRequest = Record<string, never>;
+
+/*
+ * GET /listing/subscriptions
+ */
+export type GetListingSubscriptionsRequest = Record<string, never>;
+
+/*
+ * GET /listing/topics
+ */
+export type GetListingTopicsRequest = Record<string, never>;
