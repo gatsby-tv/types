@@ -27,12 +27,12 @@ export type SignupRequest = {
   account: Pick<IUserAccount, "handle" | "name">;
 };
 
-type LoginHandleRequest = {
+export type LoginHandleRequest = {
   handle: string;
   password: string;
 };
 
-type LoginEmailRequest = {
+export type LoginEmailRequest = {
   email: string;
   password: string;
 };
