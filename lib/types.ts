@@ -7,10 +7,11 @@ export type PlaylistID = ObjectID;
 
 export type CID = string;
 export type JWT = string;
+export type MimeType = string;
 
 export type IPFSContent = {
   hash: CID;
-  type: MimeType;
+  mimeType: MimeType;
 };
 
 export interface AccountInfo {
