@@ -1,4 +1,4 @@
-export enum Genres {
+export enum Genre {
   Analysis = "Analysis",
   Clip = "Clip",
   Collaboration = "Collaboration",

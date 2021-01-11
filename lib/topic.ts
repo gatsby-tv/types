@@ -1,4 +1,4 @@
-export enum Topics {
+export enum Topic {
   Animals = "Animals",
   Animation = "Animation",
   Art = "Art",
