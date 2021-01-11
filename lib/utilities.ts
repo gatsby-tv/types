@@ -14,7 +14,7 @@ import {
   LoginEmailRequest,
   LoginHandleRequest,
   LoginRequest,
-} from "./requests";
+} from "@lib/requests";
 
 export function isPaginated<T>(
   response: T | PaginatedResponse<T>
