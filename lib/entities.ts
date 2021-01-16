@@ -23,7 +23,7 @@ import {
   ModeratorSettings,
 } from "@lib/settings";
 
-export interface IToken {
+export interface IToken extends IUser {
   readonly _id: ObjectID;
   readonly __v: number;
   readonly iat: Date;
