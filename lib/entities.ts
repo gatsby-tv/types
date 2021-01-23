@@ -37,18 +37,18 @@ export interface IChannelAccount extends AccountInfo {
 
 export interface IChannelPublicInfo {
   readonly _id: ChannelID;
-  owners: Set<UserID>;
-  collaborators: Set<UserID>;
-  contributors: Set<UserID>;
+  owners: Array<UserID>;
+  collaborators: Array<UserID>;
+  contributors: Array<UserID>;
   contributions: Contributions;
-  admins: Set<UserID>;
-  moderators: Set<UserID>;
+  admins: Array<UserID>;
+  moderators: Array<UserID>;
 }
 
 export interface IChannelPrivateInfo {
   readonly _id: ChannelID;
   trusted: boolean;
-  settings: Set<ChannelSettings>;
+  settings: Array<ChannelSettings>;
   management: {
     admins: AdminSettings;
     moderators: ModeratorSettings;
@@ -58,9 +58,9 @@ export interface IChannelPrivateInfo {
 
 export interface IChannelContent {
   readonly _id: ChannelID;
-  videos: Set<VideoID>;
-  shows: Set<ShowID>;
-  playlists: Set<PlaylistID>;
+  videos: Array<VideoID>;
+  shows: Array<ShowID>;
+  playlists: Array<PlaylistID>;
 }
 
 export type IChannel = IChannelAccount &
@@ -75,24 +75,24 @@ export interface IUserAccount extends AccountInfo {
 
 export interface IUserPublicInfo {
   readonly _id: UserID;
-  channels: Set<ChannelID>;
-  collaborations: Set<ChannelID>;
+  channels: Array<ChannelID>;
+  collaborations: Array<ChannelID>;
 }
 
 export interface IUserPrivateInfo {
   readonly _id: UserID;
   email: string;
-  administering: Set<ChannelID>;
-  moderating: Set<ChannelID>;
-  settings: Set<UserSettings>;
+  administering: Array<ChannelID>;
+  moderating: Array<ChannelID>;
+  settings: Array<UserSettings>;
   invitations: ReceivedInvites;
 }
 
 export interface IUserContentFeeds {
   readonly _id: UserID;
-  following: Set<UserID>;
-  subscriptions: Set<ChannelID>;
-  history: Set<VideoID>;
+  following: Array<UserID>;
+  subscriptions: Array<ChannelID>;
+  history: Array<VideoID>;
   bookmarks: Bookmarks;
 }
 
@@ -105,11 +105,11 @@ export interface IBasicVideo extends Omit<ContentInfo, "creationDate"> {
   readonly _id: VideoID;
   readonly releaseDate: Date;
   duration: number;
-  contributors: Set<UserID>;
+  contributors: Array<UserID>;
   contributions: Contributions;
-  sponsors: Set<UserID>;
+  sponsors: Array<UserID>;
   sponsored: boolean;
-  content: CID | Set<CID>;
+  content: CID | Array<CID>;
 }
 
 export interface ISerialVideo extends IBasicVideo {
@@ -133,20 +133,20 @@ export interface ISeasonedShow extends ContentInfo {
 
 export interface IEpisodicShow extends ContentInfo {
   readonly _id: ShowID;
-  episodes: Set<VideoID>;
+  episodes: Array<VideoID>;
 }
 
 export type IShow = ISeasonedShow | IEpisodicShow;
 
 export interface IPlaylist extends ContentInfo {
   readonly _id: PlaylistID;
-  videos: Set<VideoID>;
+  videos: Array<VideoID>;
 }
 
 export type ICollection = IShow | IPlaylist;
 
 export type ISuggestedTopics = {
-  [topic: string]: Set<ObjectID>;
+  [topic: string]: Array<ObjectID>;
 };
 
 export type ISuggestedGenres = ISuggestedTopics;

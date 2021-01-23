@@ -24,7 +24,7 @@ export interface AccountInfo {
 }
 
 export interface CategoryInfo {
-  tags: Set<string>;
+  tags: Array<string>;
   explicit: boolean;
   topic?: string;
   genre?: string;
@@ -37,12 +37,12 @@ export interface ContentInfo extends CategoryInfo {
   views: number;
   unlisted: boolean;
   channel: ChannelID;
-  collaborators: Set<UserID>;
+  collaborators: Array<UserID>;
   thumbnail: IPFSContent;
 }
 
 export type Contributions = {
-  [user: string]: Set<string>;
+  [user: string]: Array<string>;
 };
 
 export type Bookmarks = {
@@ -51,21 +51,21 @@ export type Bookmarks = {
 
 export interface Season {
   title?: string;
-  episodes: Set<VideoID>;
+  episodes: Array<VideoID>;
 }
 
 export type SentInvites = {
-  owners: Set<UserID>;
-  collaborators: Set<UserID>;
-  admins: Set<UserID>;
-  moderators: Set<UserID>;
+  owners: Array<UserID>;
+  collaborators: Array<UserID>;
+  admins: Array<UserID>;
+  moderators: Array<UserID>;
 };
 
 export type ReceivedInvites = {
-  owners: Set<ChannelID>;
-  collaborators: Set<ChannelID>;
-  admin: Set<ChannelID>;
-  moderator: Set<ChannelID>;
+  owners: Array<ChannelID>;
+  collaborators: Array<ChannelID>;
+  admin: Array<ChannelID>;
+  moderator: Array<ChannelID>;
 };
 
 export type PaginatedResponse<T> = {
