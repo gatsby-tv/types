@@ -6,6 +6,10 @@ export class WestEggError implements Error {
     this.name = name;
     this.message = message;
   }
+
+  public toString = (): string => {
+    return `${this.name}: ${this.message}`;
+  }
 }
 
 export enum ErrorCode {

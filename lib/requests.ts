@@ -98,7 +98,7 @@ export type PutUserHistoryRequest = {
 /*
  * PUT /user/:id/settings
  */
-export type PutUserSettingsRequest = { settings: Set<UserSettings> };
+export type PutUserSettingsRequest = { settings: Array<UserSettings> };
 
 /*
  * PUT /user/:id/owner/accept
@@ -216,37 +216,37 @@ export type PutChannelRequest = Partial<
 /*
  * PUT /channel/:id/settings
  */
-export type PutChannelSettingsRequest = { settings: Set<ChannelSettings> };
+export type PutChannelSettingsRequest = { settings: Array<ChannelSettings> };
 
 /*
  * PUT /channel/:id/owner/invite
  */
-export type PutChannelOwnerInviteRequest = { owners: Set<UserID> };
+export type PutChannelOwnerInviteRequest = { owners: Array<UserID> };
 
 /*
  * PUT /channel/:id/collaborator/invite
  */
 export type PutChannelCollaboratorInviteRequest = {
-  collaborators: Set<UserID>;
+  collaborators: Array<UserID>;
 };
 
 /*
  * PUT /channel/:id/contributor/invite
  */
-export type PutChannelContributorInviteRequest = { contributors: Set<UserID> };
+export type PutChannelContributorInviteRequest = { contributors: Array<UserID> };
 
 /*
  * PUT /channel/:id/contributor/roles
  */
 export type PutChannelContributorRolesRequest = {
   contributor: UserID;
-  roles: Set<string>;
+  roles: Array<string>;
 };
 
 /*
  * PUT /channel/:id/admin/invite
  */
-export type PutChannelAdminInviteRequest = { admins: Set<UserID> };
+export type PutChannelAdminInviteRequest = { admins: Array<UserID> };
 
 /*
  * PUT /channel/:id/admin/settings
@@ -259,7 +259,7 @@ export type PutChannelAdminSettingsRequest = {
 /*
  * PUT /channel/:id/moderator/invite
  */
-export type PutChannelModeratorInviteRequest = { moderators: Set<UserID> };
+export type PutChannelModeratorInviteRequest = { moderators: Array<UserID> };
 
 /*
  * PUT /channel/:id/moderator/settings
@@ -353,7 +353,7 @@ export type PutVideoViewRequest = null;
  */
 export type PutVideoContentRequest = {
   duration: number;
-  content: CID | Set<CID>;
+  content: CID | Array<CID>;
 };
 
 /*
@@ -452,4 +452,4 @@ export type DeletePlaylistRequest = null;
 /*
  * DELETE /playlist/:id/video
  */
-export type DeletePlaylistVideoRequest = { videos: Set<VideoID> };
+export type DeletePlaylistVideoRequest = { videos: Array<VideoID> };
