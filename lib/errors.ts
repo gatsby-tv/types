@@ -1,29 +1,70 @@
-export class WestEggError implements Error {
-  name: ErrorCode;
-  message: string;
+export class WestEggError extends Error {
+  statusCode: StatusCode;
+  message: ErrorMessage;
 
-  constructor(name: ErrorCode, message: string) {
-    this.name = name;
+  constructor(statusCode: StatusCode, message: ErrorMessage) {
+    super();
     this.message = message;
+    this.statusCode = statusCode;
   }
 
   public toString = (): string => {
-    return `${this.name}: ${this.message}`;
+    return `${this.statusCode}: ${this.message}`;
+  };
+}
+
+export class NotFound extends WestEggError {
+  constructor(message: ErrorMessage) {
+    super(StatusCode.NOT_FOUND, message);
   }
 }
 
-export enum ErrorCode {
+export class BadRequest extends WestEggError {
+  constructor(message: ErrorMessage) {
+    super(StatusCode.BAD_REQUEST, message);
+  }
+}
+
+export class InternalError extends WestEggError {
+  constructor() {
+    super(StatusCode.INTERNAL_ERROR, ErrorMessage.INTERNAL_ERROR);
+  }
+}
+
+export class Unauthorized extends WestEggError {
+  constructor(message: ErrorMessage) {
+    super(StatusCode.UNAUTHORIZED, message);
+  }
+}
+
+export class Forbidden extends WestEggError {
+  constructor(message: ErrorMessage) {
+    super(StatusCode.FORBIDDEN, message);
+  }
+}
+
+export enum StatusCode {
+  NOT_FOUND = 404,
+  BAD_REQUEST = 400,
+  INTERNAL_ERROR = 500,
+  UNAUTHORIZED = 401,
+  FORBIDDEN = 403
+}
+
+export enum ErrorMessage {
   // Common HTTP error responses
   NOT_FOUND = "NOT_FOUND",
   BAD_REQUEST = "BAD_REQUEST",
   INTERNAL_ERROR = "INTERNAL_ERROR",
   UNAUTHORIZED = "UNAUTHORIZED",
 
-  // Login Errors
+  // Login
   HANDLE_OR_EMAIL_REQUIRED = "HANDLE_OR_EMAIL_REQUIRED",
   INVALID_CREDENTIALS = "INVALID_CREDENTIALS",
+  NO_BEARER_TOKEN_SET = "NO_BEARER_TOKEN_SET",
+  NO_BEARER_TOKEN_PREFIX = "NO_BEARER_TOKEN_PREFIX",
 
-  // Email Validation errors
+  // Email
   EMAIL_IN_USE = "EMAIL_IN_USE",
   EMAIL_OUT_OF_RANGE = "EMAIL_OUT_OF_RANGE",
   INVALID_EMAIL = "INVALID_EMAIL",
@@ -38,10 +79,18 @@ export enum ErrorCode {
   INVALID_HANDLE = "INVALID_HANDLE",
   HANDLE_IN_USE = "HANDLE_IN_USE",
 
-  // Display Name
-  DISPLAY_NAME_OUT_OF_RANGE = "DISPLAY_NAME_OUT_OF_RANGE",
+  // Name
+  NAME_OUT_OF_RANGE = "NAME_OUT_OF_RANGE",
 
-  // Video Upload
+  // User
+  USER_FORBIDDEN_TO_PERFORM_ACTION = "USER_FORBIDDEN_TO_PERFORM_ACTION",
+  USER_NOT_FOUND = "USER_NOT_FOUND",
+
+  // Channel
+  CHANNEL_NOT_FOUND = "CHANNEL_NOT_FOUND",
+
+  // Video
+  VIDEO_ALREADY_EXISTS = "VIDEO_ALREADY_EXISTS",
   VIDEO_TITLE_OUT_OF_RANGE = "VIDEO_TITLE_OUT_OF_RANGE",
   VIDEO_DESCRIPTION_OUT_OF_RANGE = "VIDEO_DESCRIPTION_OUT_OF_RANGE",
 }
