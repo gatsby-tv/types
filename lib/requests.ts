@@ -47,48 +47,48 @@ export type LoginRequest = LoginHandleRequest | LoginEmailRequest;
 // --------------------------------------------------
 
 /*
- * GET /user/:id
+ * GET /user/:handle
  */
-export type GetUserAccountRequest = null;
+export type GetUserAccountRequest = {};
 
 /*
- * GET /user/:id/public
+ * GET /user/:handle/public
  */
-export type GetUserPublicRequest = null;
+export type GetUserPublicRequest = {};
 
 /*
- * GET /user/:id/private
+ * GET /user/:handle/private
  */
-export type GetUserPrivateRequest = null;
+export type GetUserPrivateRequest = {};
 
 /*
- * GET /user/:id/feeds
+ * GET /user/:handle/feeds
  */
-export type GetUserFeedsRequest = null;
+export type GetUserFeedsRequest = {};
 
 /*
- * PUT /user/:id
+ * PUT /user/:handle
  */
 export type PutUserRequest = Partial<
   Pick<IUserAccount, "avatar" | "handle" | "name" | "description">
 >;
 
 /*
- * PUT /user/:id/subscription
+ * PUT /user/:handle/subscription
  */
 export type PutUserSubscriptionRequest = {
   subscription: ChannelID;
 };
 
 /*
- * PUT /user/:id/follow
+ * PUT /user/:handle/follow
  */
 export type PutUserFollowingRequest = {
   follow: UserID;
 };
 
 /*
- * PUT /user/:id/history
+ * PUT /user/:handle/history
  */
 export type PutUserHistoryRequest = {
   video: VideoID;
@@ -96,82 +96,82 @@ export type PutUserHistoryRequest = {
 };
 
 /*
- * PUT /user/:id/settings
+ * PUT /user/:handle/settings
  */
 export type PutUserSettingsRequest = { settings: Array<UserSettings> };
 
 /*
- * PUT /user/:id/owner/accept
+ * PUT /user/:handle/owner/accept
  */
 export type PutUserOwnerAcceptRequest = { channel: ChannelID };
 
 /*
- * PUT /user/:id/collaboration/accept
+ * PUT /user/:handle/collaboration/accept
  */
 export type PutUserCollaborationAcceptRequest = { channel: ChannelID };
 
 /*
- * PUT /user/:id/admin/accept
+ * PUT /user/:handle/admin/accept
  */
 export type PutUserAdminAcceptRequest = { channel: ChannelID };
 
 /*
- * PUT /user/:id/moderation/accept
+ * PUT /user/:handle/moderation/accept
  */
 export type PutUserModerationAcceptRequest = { channel: ChannelID };
 
 /*
- * DELETE /user/:id
+ * DELETE /user/:handle
  */
-export type DeleteUserRequest = null;
+export type DeleteUserRequest = {};
 
 /*
- * DELETE /user/:id/subscription
+ * DELETE /user/:handle/subscription
  */
 export type DeleteUserSubscriptionRequest = { channel: ChannelID };
 
 /*
- * DELETE /user/:id/follow
+ * DELETE /user/:handle/follow
  */
 export type DeleteUserFollowRequest = { follow: UserID };
 
 /*
- * DELETE /user/:id/history
+ * DELETE /user/:handle/history
  */
 export type DeleteUserHistoryRequest = { video: VideoID };
 
 /*
- * DELETE /user/:id/history/all
+ * DELETE /user/:handle/history/all
  */
-export type DeleteUserEntireHistoryRequest = null;
+export type DeleteUserEntireHistoryRequest = {};
 
 /*
- * DELETE /user/:id/collaboration
+ * DELETE /user/:handle/collaboration
  */
 export type DeleteUserCollaborationRequest = { channel: ChannelID };
 
 /*
- * DELETE /user/:id/admin
+ * DELETE /user/:handle/admin
  */
 export type DeleteUserAdminRequest = { channel: ChannelID };
 
 /*
- * DELETE /user/:id/moderator
+ * DELETE /user/:handle/moderator
  */
 export type DeleteUserModeratorRequest = { channel: ChannelID };
 
 /*
- * DELETE /user/:id/collaboration/invite
+ * DELETE /user/:handle/collaboration/invite
  */
 export type DeleteUserCollaborationInviteRequest = { channel: ChannelID };
 
 /*
- * DELETE /user/:id/admin/invite
+ * DELETE /user/:handle/admin/invite
  */
 export type DeleteUserAdminInviteRequest = { channel: ChannelID };
 
 /*
- * DELETE /user/:id/moderator/invite
+ * DELETE /user/:handle/moderator/invite
  */
 export type DeleteUserModeratorInviteRequest = { channel: ChannelID };
 
@@ -180,63 +180,63 @@ export type DeleteUserModeratorInviteRequest = { channel: ChannelID };
 // --------------------------------------------------
 
 /*
- * POST /channe
+ * POST /channel
  */
 export type PostChannelRequest = Pick<IChannelAccount, "handle" | "name"> & {
   owner: UserID;
 };
 
 /*
- * GET /channel/:id
+ * GET /channel/:handle
  */
-export type GetChannelAccountRequest = null;
+export type GetChannelAccountRequest = {};
 
 /*
- * GET /channel/:id/public
+ * GET /channel/:handle/public
  */
-export type GetChannePublicRequest = null;
+export type GetChannePublicRequest = {};
 
 /*
- * GET /channel/:id/private
+ * GET /channel/:handle/private
  */
-export type GetChannelPrivateRequest = null;
+export type GetChannelPrivateRequest = {};
 
 /*
- * GET /channel/:id/content
+ * GET /channel/:handle/content
  */
-export type GetChannelContentRequest = null;
+export type GetChannelContentRequest = {};
 
 /*
- * PUT /channel/:id
+ * PUT /channel/:handle
  */
 export type PutChannelRequest = Partial<
   Pick<IChannelAccount, "avatar" | "handle" | "name" | "description">
 >;
 
 /*
- * PUT /channel/:id/settings
+ * PUT /channel/:handle/settings
  */
 export type PutChannelSettingsRequest = { settings: Array<ChannelSettings> };
 
 /*
- * PUT /channel/:id/owner/invite
+ * PUT /channel/:handle/owner/invite
  */
 export type PutChannelOwnerInviteRequest = { owners: Array<UserID> };
 
 /*
- * PUT /channel/:id/collaborator/invite
+ * PUT /channel/:handle/collaborator/invite
  */
 export type PutChannelCollaboratorInviteRequest = {
   collaborators: Array<UserID>;
 };
 
 /*
- * PUT /channel/:id/contributor/invite
+ * PUT /channel/:handle/contributor/invite
  */
 export type PutChannelContributorInviteRequest = { contributors: Array<UserID> };
 
 /*
- * PUT /channel/:id/contributor/roles
+ * PUT /channel/:handle/contributor/roles
  */
 export type PutChannelContributorRolesRequest = {
   contributor: UserID;
@@ -244,12 +244,12 @@ export type PutChannelContributorRolesRequest = {
 };
 
 /*
- * PUT /channel/:id/admin/invite
+ * PUT /channel/:handle/admin/invite
  */
 export type PutChannelAdminInviteRequest = { admins: Array<UserID> };
 
 /*
- * PUT /channel/:id/admin/settings
+ * PUT /channel/:handle/admin/settings
  */
 export type PutChannelAdminSettingsRequest = {
   admin: UserID;
@@ -257,12 +257,12 @@ export type PutChannelAdminSettingsRequest = {
 };
 
 /*
- * PUT /channel/:id/moderator/invite
+ * PUT /channel/:handle/moderator/invite
  */
 export type PutChannelModeratorInviteRequest = { moderators: Array<UserID> };
 
 /*
- * PUT /channel/:id/moderator/settings
+ * PUT /channel/:handle/moderator/settings
  */
 export type PutChannelModeratorSettingsRequest = {
   moderator: UserID;
@@ -270,52 +270,52 @@ export type PutChannelModeratorSettingsRequest = {
 };
 
 /*
- * DELETE /channel/:id/owner
+ * DELETE /channel/:handle/owner
  */
 export type DeleteChannelOwnerRequest = { owner: UserID };
 
 /*
- * DELETE /channel/:id/collaborator
+ * DELETE /channel/:handle/collaborator
  */
 export type DeleteChannelCollaboratorRequest = { collaborator: UserID };
 
 /*
- * DELETE /channel/:id/contributor
+ * DELETE /channel/:handle/contributor
  */
 export type DeleteChannelContributorRequest = { contributor: UserID };
 
 /*
- * DELETE /channel/:id/admin
+ * DELETE /channel/:handle/admin
  */
 export type DeleteChannelAdminRequest = { admin: UserID };
 
 /*
- * DELETE /channel/:id/moderator
+ * DELETE /channel/:handle/moderator
  */
 export type DeleteChannelModeratorRequest = { moderator: UserID };
 
 /*
- * DELETE /channel/:id/owner/invite
+ * DELETE /channel/:handle/owner/invite
  */
 export type DeleteChannelOwnerInviteRequest = { owner: UserID };
 
 /*
- * DELETE /channel/:id/collaborator/invite
+ * DELETE /channel/:handle/collaborator/invite
  */
 export type DeleteChannelCollaboratorInviteRequest = { collaborator: UserID };
 
 /*
- * DELETE /channel/:id/contributor/invite
+ * DELETE /channel/:handle/contributor/invite
  */
 export type DeleteChannelContributorInviteRequest = { contributor: UserID };
 
 /*
- * DELETE /channel/:id/admin/invite
+ * DELETE /channel/:handle/admin/invite
  */
 export type DeleteChannelAdminInviteRequest = { admin: UserID };
 
 /*
- * DELETE /channel/:id/moderator/invite
+ * DELETE /channel/:handle/moderator/invite
  */
 export type DeleteChannelModeratorInviteRequest = { moderator: UserID };
 
@@ -334,7 +334,7 @@ export type PostVideoRequest = Omit<
 /*
  * GET /video/:id
  */
-export type GetVideoRequest = null;
+export type GetVideoRequest = {};
 
 /*
  * PUT /video/:id
@@ -346,7 +346,7 @@ export type PutVideoRequest = Partial<
 /*
  * PUT /video/:id/view
  */
-export type PutVideoViewRequest = null;
+export type PutVideoViewRequest = {};
 
 /*
  * PUT /video/:id/content
@@ -366,7 +366,7 @@ export type PutVideoReportRequest = {
 /*
  * DELETE /video/:id
  */
-export type DeleteVideoRequest = null;
+export type DeleteVideoRequest = {};
 
 //
 // Show Requests
@@ -388,7 +388,7 @@ export type PostShowEpisodeRequest = {
 /*
  * GET /show/:id
  */
-export type GetShowRequest = null;
+export type GetShowRequest = {};
 
 /*
  * PUT /show/:id
@@ -418,7 +418,7 @@ export type PutShowContentRequest =
 /*
  * DELETE /show/:id
  */
-export type DeleteShowRequest = null;
+export type DeleteShowRequest = {};
 
 //
 // Playlist Requests
@@ -435,7 +435,7 @@ export type PostPlaylistRequest = Omit<
 /*
  * GET /playlist/:id
  */
-export type GetPlaylistRequest = null;
+export type GetPlaylistRequest = {};
 
 /*
  * PUT /playlist/:id
@@ -447,7 +447,7 @@ export type PutPlaylistRequest = Partial<
 /*
  * DELETE /playlist/:id
  */
-export type DeletePlaylistRequest = null;
+export type DeletePlaylistRequest = {};
 
 /*
  * DELETE /playlist/:id/video
