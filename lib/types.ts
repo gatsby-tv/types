@@ -1,72 +1,139 @@
-export type ObjectID = string;
-export type UserID = ObjectID;
-export type ChannelID = ObjectID;
-export type VideoID = ObjectID;
-export type ShowID = ObjectID;
-export type PlaylistID = ObjectID;
+import {
+  IChannelAccount,
+  IChannelPublicInfo,
+  IChannelPrivateInfo,
+  IChannelContent,
+  IUserAccount,
+  IUserPublicInfo,
+  IUserPrivateInfo,
+  IUserContentFeeds,
+  IUserHistory,
+  IUserPromotions,
+  IBasicVideo,
+  IVideoReport,
+  ISeasonedShow,
+  IPlaylist,
+} from "@lib/entities";
 
-export type CID = string;
-export type JWT = string;
-export type MimeType = string;
-
-export type IPFSContent = {
-  hash: CID;
-  mimeType: MimeType;
-};
-
-export interface AccountInfo {
-  avatar: IPFSContent;
-  handle: string;
-  name: string;
-  verified: boolean;
-  description: string;
-  creationDate: Date;
+/*
+ * Format of JWT used for authentication requests.
+ *
+ * Every JWT is sent via the Authorization HTTP header and signed
+ * using a shared secret.
+ *
+ * Although it is possible to extend this object to include additional
+ * session data, the keys specified here are required.
+ */
+export interface Token {
+  readonly _id: string;
+  readonly __v: number;
+  readonly iat: Date;
+  readonly exp: Date;
 }
 
-export interface CategoryInfo {
-  tags: Array<string>;
-  explicit: boolean;
-  topic?: string;
-  genre?: string;
-}
+type Override<T, K> = Omit<T, keyof K> & K;
 
-export interface ContentInfo extends CategoryInfo {
-  readonly creationDate: Date;
-  title: string;
-  description: string;
-  views: number;
-  unlisted: boolean;
-  channel: ChannelID;
-  collaborators: Array<UserID>;
-  thumbnail: IPFSContent;
-}
+export type Channel = IChannelAccount;
 
-export type Contributions = {
-  [user: string]: Array<string>;
-};
+export type ChannelPublicInfo = Override<
+  IChannelPublicInfo,
+  Record<
+    "owners" | "collaborators" | "contributors" | "admins" | "moderators",
+    Array<User>
+  >
+>;
 
-export type Bookmarks = {
-  [video: string]: number;
-};
+export type ChannelPrivateInfo = IChannelPrivateInfo;
 
-export interface Season {
+export type ChannelContent = Override<
+  IChannelContent,
+  {
+    videos: Array<Video>;
+    shows: Array<Show>;
+    playlists: Array<Playlist>;
+  }
+>;
+
+export type User = IUserAccount;
+
+export type UserPublicInfo = Override<
+  IUserPublicInfo,
+  Record<"channels" | "collaborations", Array<Channel>>
+>;
+
+export type UserPrivateInfo = Override<
+  IUserPrivateInfo,
+  Record<"administering" | "moderating", Channel>
+>;
+
+export type UserContentFeeds = Override<
+  IUserContentFeeds,
+  {
+    following: Array<User>;
+    subscriptions: Array<Channel>;
+  }
+>;
+
+export type UserHistory = Override<IUserHistory, { history: Array<Browsable> }>;
+
+export type UserPromotions = IUserPromotions;
+
+export type BasicVideo = Override<
+  IBasicVideo,
+  {
+    channel: Channel;
+    collaborators: Array<User>;
+    contributors: Array<User>;
+    sponsors: Array<User>;
+  }
+>;
+
+export type SerialVideo = BasicVideo & { playlist: Playlist };
+
+export type EpisodicVideo = BasicVideo & { show: Show };
+
+export type Video = BasicVideo | SerialVideo | EpisodicVideo;
+
+export type VideoReport = IVideoReport;
+
+/*
+ * Seasons list only `BasicVideo` objects rather than `EpisodicVideo`
+ * objects to prevent recursion.
+ */
+export type Season = {
   title?: string;
-  episodes: Array<VideoID>;
-}
-
-export type SentInvites = {
-  owners: Array<UserID>;
-  collaborators: Array<UserID>;
-  admins: Array<UserID>;
-  moderators: Array<UserID>;
+  episodes: Array<BasicVideo>;
 };
 
-export type ReceivedInvites = {
-  owners: Array<ChannelID>;
-  collaborators: Array<ChannelID>;
-  admin: Array<ChannelID>;
-  moderator: Array<ChannelID>;
+export type SeasonedShow = Override<
+  ISeasonedShow,
+  {
+    channel: Channel;
+    collaborators: Array<User>;
+    seasons: Array<Season>;
+  }
+>;
+
+export type EpisodicShow = Omit<SeasonedShow, "seasons"> & {
+  episodes: Array<BasicVideo>;
 };
+
+export type Show = SeasonedShow | EpisodicShow;
+
+/*
+ * As with `Season`, playlists only list `BasicVideo` objects rather
+ * than `SerialVideo` objects to prevent recursion.
+ */
+export type Playlist = Override<
+  IPlaylist,
+  {
+    channel: Channel;
+    collaborators: Array<User>;
+    videos: Array<BasicVideo>;
+  }
+>;
+
+export type Browsable = BasicVideo | SerialVideo | Show;
 
 export type PaginatedResponse<T> = {
   page: number;
