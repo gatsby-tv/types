@@ -9,45 +9,56 @@ import {
   IEpisodicShow,
   IPlaylist,
 } from "@lib/entities";
-import { CID, ChannelID, UserID, VideoID } from "@lib/types";
 import { Report } from "@lib/report";
+import { CID, ChannelID, UserID, VideoID } from "@lib/shared";
+import { AdminPermissions } from "@lib/permissions";
 import {
   UserSettings,
   ChannelSettings,
-  AdminSettings,
-  ModeratorSettings,
+  ModerationSettings,
 } from "@lib/settings";
 
 /*
  * POST /auth/signup
+ *
+ * Requires authorization.
+ *
+ * Request to create a new user from the specified handle and display name.
+ * In addition, the request allows for an avatar to be submitted via multipart/form-data.
  */
-export type SignupRequest = {
-  email: string;
-  password: [string, string];
-  account: Pick<IUserAccount, "handle" | "name">;
-};
-
-export type LoginHandleRequest = {
-  handle: string;
-  password: string;
-};
-
-export type LoginEmailRequest = {
-  email: string;
-  password: string;
-};
+export type PostAuthSignupRequest = Pick<
+  IUserAccount,
+  "_id" | "handle" | "name"
+>;
 
 /*
- * POST /auth/login
+ * GET /auth/user/:id
+ *
+ * Requires authorization.
  */
-export type LoginRequest = LoginHandleRequest | LoginEmailRequest;
+export type GetAuthUserRequest = Pick<IUserAccount, "_id">;
+
+/*
+ * GET /auth/user/:id/exists
+ */
+export type GetAuthUserExistsRequest = {};
+
+/*
+ * GET /auth/user/handle/:handle/exists
+ */
+export type GetAuthUserHandleExistsRequest = {};
+
+/*
+ * GET /auth/channel/handle/:handle/exists
+ */
+export type GetAuthChannelHandleExistsRequest = {};
 
 //
 // User Requests
 // --------------------------------------------------
 
 /*
- * GET /user/:handle
+ * GET /user/{:id,:handle}
  */
 export type GetUserAccountRequest = {};
 
@@ -67,14 +78,39 @@ export type GetUserPrivateRequest = {};
 export type GetUserFeedsRequest = {};
 
 /*
- * PUT /user/:handle
+ * GET /user/:id/history
+ */
+export type GetUserHistoryRequest = {};
+
+/*
+ * GET /user/:id/promotions
+ */
+export type GetUserPromotionsRequest = {};
+
+/*
+ * PUT /user/:id
  */
 export type PutUserRequest = Partial<
-  Pick<IUserAccount, "avatar" | "handle" | "name" | "description">
+  Pick<IUserAccount, "name" | "description">
 >;
 
 /*
- * PUT /user/:handle/subscription
+ * PUT /user/:id/handle
+ */
+export type PutUserHandleRequest = {};
+
+/*
+ * PUT /user/:id/avatar
+ */
+export type PutUserAvatarRequest = {};
+
+/*
+ * PUT /user/:id/banner
+ */
+export type PutUserBannerRequest = {};
+
+/*
+ * PUT /user/:id/subscription
  */
 export type PutUserSubscriptionRequest = {
   subscription: ChannelID;
@@ -96,7 +132,12 @@ export type PutUserHistoryRequest = {
 };
 
 /*
- * PUT /user/:handle/settings
+ * PUT /user/:id/promotion
+ */
+export type PutUserPromotionRequest = { video: VideoID };
+
+/*
+ * PUT /user/:id/settings
  */
 export type PutUserSettingsRequest = { settings: Array<UserSettings> };
 
@@ -144,6 +185,11 @@ export type DeleteUserHistoryRequest = { video: VideoID };
  * DELETE /user/:handle/history/all
  */
 export type DeleteUserEntireHistoryRequest = {};
+
+/*
+ * DELETE /user/:id/promotion
+ */
+export type DeleteUserPromotionRequest = { video: VideoID };
 
 /*
  * DELETE /user/:handle/collaboration
@@ -210,11 +256,31 @@ export type GetChannelContentRequest = {};
  * PUT /channel/:handle
  */
 export type PutChannelRequest = Partial<
-  Pick<IChannelAccount, "avatar" | "handle" | "name" | "description">
+  Pick<IChannelAccount, "name" | "description">
 >;
 
 /*
- * PUT /channel/:handle/settings
+ * PUT /channel/:id/handle
+ */
+export type PutChannelHandleRequest = {};
+
+/*
+ * PUT /channel/:id/avatar
+ */
+export type PutChannelAvatarRequest = {};
+
+/*
+ * PUT /channel/:id/banner
+ */
+export type PutChannelBannerRequest = {};
+
+/*
+ * PUT /channel/:id/poster
+ */
+export type PutChannelPosterRequest = {};
+
+/*
+ * PUT /channel/:id/settings
  */
 export type PutChannelSettingsRequest = { settings: Array<ChannelSettings> };
 
@@ -233,7 +299,9 @@ export type PutChannelCollaboratorInviteRequest = {
 /*
  * PUT /channel/:handle/contributor/invite
  */
-export type PutChannelContributorInviteRequest = { contributors: Array<UserID> };
+export type PutChannelContributorInviteRequest = {
+  contributors: Array<UserID>;
+};
 
 /*
  * PUT /channel/:handle/contributor/roles
@@ -253,7 +321,7 @@ export type PutChannelAdminInviteRequest = { admins: Array<UserID> };
  */
 export type PutChannelAdminSettingsRequest = {
   admin: UserID;
-  settings: AdminSettings[string];
+  permissions: Array<AdminPermissions>;
 };
 
 /*
@@ -266,7 +334,7 @@ export type PutChannelModeratorInviteRequest = { moderators: Array<UserID> };
  */
 export type PutChannelModeratorSettingsRequest = {
   moderator: UserID;
-  settings: ModeratorSettings[string];
+  moderations: ModerationSettings;
 };
 
 /*
@@ -445,11 +513,45 @@ export type PutPlaylistRequest = Partial<
 >;
 
 /*
+ * PUT /playlist/:id/content
+ */
+export type PutPlaylistContentRequest = Pick<IPlaylist, "videos">;
+
+/*
  * DELETE /playlist/:id
  */
 export type DeletePlaylistRequest = {};
 
+//
+// Listing Requests
+// --------------------------------------------------
+
 /*
- * DELETE /playlist/:id/video
+ * GET /listing/featured/channels
  */
-export type DeletePlaylistVideoRequest = { videos: Array<VideoID> };
+export type GetListingFeaturedChannelsRequest = {};
+
+/*
+ * GET /listing/videos/recommended
+ */
+export type GetListingRecommendedVideosRequest = {};
+
+/*
+ * GET /listing/videos/popular
+ */
+export type GetListingPopularVideosRequest = {};
+
+/*
+ * GET /listing/videos/new
+ */
+export type GetListingNewVideosRequest = {};
+
+/*
+ * GET /listing/subscriptions
+ */
+export type GetListingSubscriptionsRequest = {};
+
+/*
+ * GET /listing/topics
+ */
+export type GetListingTopicsRequest = {};

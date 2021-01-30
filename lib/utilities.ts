@@ -10,11 +10,6 @@ import {
   ICollection,
 } from "@lib/entities";
 import { PaginatedResponse } from "@lib/types";
-import {
-  LoginEmailRequest,
-  LoginHandleRequest,
-  LoginRequest,
-} from "@lib/requests";
 
 export function isPaginated<T>(
   response: T | PaginatedResponse<T>
@@ -51,16 +46,4 @@ export function isShow(collection: ICollection): collection is IShow {
 
 export function isPlaylist(collection: ICollection): collection is IPlaylist {
   return (collection as IPlaylist).videos !== undefined;
-}
-
-export function isLoginHandleRequest(
-  login: LoginRequest
-): login is LoginHandleRequest {
-  return (login as LoginHandleRequest).handle !== undefined;
-}
-
-export function isLoginEmailRequest(
-  login: LoginRequest
-): login is LoginEmailRequest {
-  return (login as LoginEmailRequest).email !== undefined;
 }
