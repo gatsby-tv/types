@@ -58,17 +58,17 @@ export type GetAuthChannelHandleExistsResponse = {};
 export type GetUserAccountResponse = User;
 
 /*
- * GET /user/:handle/public
+ * GET /user/:id/public
  */
 export type GetUserPublicResponse = UserPublicInfo;
 
 /*
- * GET /user/:handle/private
+ * GET /user/:id/private
  */
 export type GetUserPrivateResponse = UserPrivateInfo;
 
 /*
- * GET /user/:handle/feeds
+ * GET /user/:id/feeds
  */
 export type GetUserFeedsResponse = UserContentFeeds;
 
@@ -103,17 +103,17 @@ export type PutUserAvatarResponse = {};
 export type PutUserBannerResponse = {};
 
 /*
- * PUT /user/:handle/subscription
+ * PUT /user/:id/subscription
  */
 export type PutUserSubscriptionResponse = {};
 
 /*
- * PUT /user/:handle/follow
+ * PUT /user/:id/follow
  */
 export type PutUserFollowResponse = {};
 
 /*
- * PUT /user/:handle/history
+ * PUT /user/:id/history
  */
 export type PutUserHistoryResponse = {};
 
@@ -123,52 +123,52 @@ export type PutUserHistoryResponse = {};
 export type PutUserPromotionResponse = {};
 
 /*
- * PUT /user/:handle/settings
+ * PUT /user/:id/settings
  */
 export type PutUserSettingsResponse = {};
 
 /*
- * PUT /user/:handle/owner/accept
+ * PUT /user/:id/owner/accept
  */
 export type PutUserOwnerAcceptResponse = {};
 
 /*
- * PUT /user/:handle/collaboration/accept
+ * PUT /user/:id/collaboration/accept
  */
 export type PutUserCollaborationAcceptResponse = {};
 
 /*
- * PUT /user/:handle/admin/accept
+ * PUT /user/:id/admin/accept
  */
 export type PutUserAdminAcceptResponse = {};
 
 /*
- * PUT /user/:handle/moderator/accept
+ * PUT /user/:id/moderator/accept
  */
 export type PutUserModeratorAcceptResponse = {};
 
 /*
- * DELETE /user/:handle
+ * DELETE /user/:id
  */
 export type DeleteUserResponse = {};
 
 /*
- * DELETE /user/:handle/subscription
+ * DELETE /user/:id/subscription
  */
 export type DeleteUserSubscriptionResponse = {};
 
 /*
- * DELETE /user/:handle/follow
+ * DELETE /user/:id/follow
  */
 export type DeleteUserFollowResponse = {};
 
 /*
- * DELETE /user/:handle/history
+ * DELETE /user/:id/history
  */
 export type DeleteUserHistoryResponse = {};
 
 /*
- * DELETE /user/:handle/history/all
+ * DELETE /user/:id/history/all
  */
 export type DeleteUserEntireHistoryResponse = {};
 
@@ -178,37 +178,37 @@ export type DeleteUserEntireHistoryResponse = {};
 export type DeleteUserPromotionResponse = {};
 
 /*
- * DELETE /user/:handle/collaboration
+ * DELETE /user/:id/collaboration
  */
 export type DeleteUserCollaborationResponse = {};
 
 /*
- * DELETE /user/:handle/admin
+ * DELETE /user/:id/admin
  */
 export type DeleteUserAdminResponse = {};
 
 /*
- * DELETE /user/:handle/moderator
+ * DELETE /user/:id/moderator
  */
 export type DeleteUserModeratorResponse = {};
 
 /*
- * DELETE /user/:handle/owner/invite
+ * DELETE /user/:id/owner/invite
  */
 export type DeleteUserOwnerInviteResponse = {};
 
 /*
- * DELETE /user/:handle/collaboration/invite
+ * DELETE /user/:id/collaboration/invite
  */
 export type DeleteUserCollaborationInviteResponse = {};
 
 /*
- * DELETE /user/:handle/admin/invite
+ * DELETE /user/:id/admin/invite
  */
 export type DeleteUserAdminInviteResponse = {};
 
 /*
- * DELETE /user/:handle/moderator/invite
+ * DELETE /user/:id/moderator/invite
  */
 export type PutUserModeratorInviteResponse = {};
 
@@ -222,27 +222,27 @@ export type PutUserModeratorInviteResponse = {};
 export type PostChannelResponse = {};
 
 /*
- * GET /channel/:channel
+ * GET /channel/{:id,:handle}
  */
 export type GetChannelAccountResponse = Channel;
 
 /*
- * GET /channel/:channel/public
+ * GET /channel/:id/public
  */
 export type GetChannelPublicResponse = ChannelPublicInfo;
 
 /*
- * GET /channel/:channel/private
+ * GET /channel/:id/private
  */
 export type GetChannelPrivateResponse = ChannelPrivateInfo;
 
 /*
- * GET /channel/:channel/content
+ * GET /channel/:id/content
  */
 export type GetChannelContentResponse = ChannelContent;
 
 /*
- * PUT /channel/:channel
+ * PUT /channel/:id
  */
 export type PutChannelResponse = {};
 
@@ -267,97 +267,97 @@ export type PutChannelBannerResponse = {};
 export type PutChannelPosterResponse = {};
 
 /*
- * PUT /channel/:channel/owner/invite
+ * PUT /channel/:id/owner/invite
  */
 export type PutChannelOwnerInviteResponse = {};
 
 /*
- * PUT /channel/:channel/collaborator/invite
+ * PUT /channel/:id/collaborator/invite
  */
 export type PutChannelCollaboratorInviteResponse = {};
 
 /*
- * PUT /channel/:channel/contributor/invite
+ * PUT /channel/:id/contributor/invite
  */
 export type PutChannelContributorInviteResponse = {};
 
 /*
- * PUT /channel/:channel/contributor/roles
+ * PUT /channel/:id/contributor/roles
  */
 export type PutChannelContributorRolesResponse = {};
 
 /*
- * PUT /channel/:channel/admin/invite
+ * PUT /channel/:id/admin/invite
  */
 export type PutChannelAdminInviteResponse = {};
 
 /*
- * PUT /channel/:channel/admin/settings
+ * PUT /channel/:id/admin/settings
  */
 export type PutChannelAdminSettingsResponse = {};
 
 /*
- * PUT /channel/:channel/moderator/invite
+ * PUT /channel/:id/moderator/invite
  */
 export type PutChannelModeratorInviteResponse = {};
 
 /*
- * PUT /channel/:channel/moderator/settings
+ * PUT /channel/:id/moderator/settings
  */
 export type PutChannelModeratorSettingsResponse = {};
 
 /*
- * DELETE /channel/:channel
+ * DELETE /channel/:id
  */
 export type DeleteChannelResponse = {};
 
 /*
- * DELETE /channel/:channel/owner
+ * DELETE /channel/:id/owner
  */
 export type DeleteChannelOwnerResponse = {};
 
 /*
- * DELETE /channel/:channel/collaborator
+ * DELETE /channel/:id/collaborator
  */
 export type DeleteChannelCollaboratorResponse = {};
 
 /*
- * DELETE /channel/:channel/contributor
+ * DELETE /channel/:id/contributor
  */
 export type DeleteChannelContributorResponse = {};
 
 /*
- * DELETE /channel/:channel/admin
+ * DELETE /channel/:id/admin
  */
 export type DeleteChannelAdminResponse = {};
 
 /*
- * DELETE /channel/:channel/moderator
+ * DELETE /channel/:id/moderator
  */
 export type DeleteChannelModeratorResponse = {};
 
 /*
- * DELETE /channel/:channel/owner/invite
+ * DELETE /channel/:id/owner/invite
  */
 export type DeleteChannelOwnerInviteResponse = {};
 
 /*
- * DELETE /channel/:channel/collaborator/invite
+ * DELETE /channel/:id/collaborator/invite
  */
 export type DeleteChannelCollaboratorInviteResponse = {};
 
 /*
- * DELETE /channel/:channel/contributor/invite
+ * DELETE /channel/:id/contributor/invite
  */
 export type DeleteChannelContributorInviteResponse = {};
 
 /*
- * DELETE /channel/:channel/admin/invite
+ * DELETE /channel/:id/admin/invite
  */
 export type DeleteChannelAdminInviteResponse = {};
 
 /*
- * DELETE /channel/:channel/moderator/invite
+ * DELETE /channel/:id/moderator/invite
  */
 export type DeleteChannelModeratorInviteResponse = {};
 
