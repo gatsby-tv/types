@@ -36,17 +36,17 @@ export type GetAuthUserResponse = { token: Token };
 /*
  * GET /auth/user/:id/exists
  */
-export type GetAuthUserExistsResponse = Record<string, never>;
+export type GetAuthUserExistsResponse = {};
 
 /*
  * GET /auth/user/handle/:handle/exists
  */
-export type GetAuthUserHandleExistsResponse = Record<string, never>;
+export type GetAuthUserHandleExistsResponse = {};
 
 /*
  * GET /auth/channel/handle/:handle/exists
  */
-export type GetAuthChannelHandleExistsResponse = Record<string, never>;
+export type GetAuthChannelHandleExistsResponse = {};
 
 //
 // User Responses
@@ -85,132 +85,132 @@ export type GetUserPromotionsResponse = UserPromotions;
 /*
  * PUT /user/:id
  */
-export type PutUserResponse = Record<string, never>;
+export type PutUserResponse = {};
 
 /*
  * PUT /user/:id/handle
  */
-export type PutUserHandleResponse = Record<string, never>;
+export type PutUserHandleResponse = {};
 
 /*
  * PUT /user/:id/avatar
  */
-export type PutUserAvatarResponse = Record<string, never>;
+export type PutUserAvatarResponse = {};
 
 /*
  * PUT /user/:id/banner
  */
-export type PutUserBannerResponse = Record<string, never>;
+export type PutUserBannerResponse = {};
 
 /*
  * PUT /user/:handle/subscription
  */
-export type PutUserSubscriptionResponse = Record<string, never>;
+export type PutUserSubscriptionResponse = {};
 
 /*
  * PUT /user/:handle/follow
  */
-export type PutUserFollowResponse = Record<string, never>;
+export type PutUserFollowResponse = {};
 
 /*
  * PUT /user/:handle/history
  */
-export type PutUserHistoryResponse = Record<string, never>;
+export type PutUserHistoryResponse = {};
 
 /*
  * PUT /user/:id/promotion
  */
-export type PutUserPromotionResponse = Record<string, never>;
+export type PutUserPromotionResponse = {};
 
 /*
  * PUT /user/:handle/settings
  */
-export type PutUserSettingsResponse = Record<string, never>;
+export type PutUserSettingsResponse = {};
 
 /*
  * PUT /user/:handle/owner/accept
  */
-export type PutUserOwnerAcceptResponse = Record<string, never>;
+export type PutUserOwnerAcceptResponse = {};
 
 /*
  * PUT /user/:handle/collaboration/accept
  */
-export type PutUserCollaborationAcceptResponse = Record<string, never>;
+export type PutUserCollaborationAcceptResponse = {};
 
 /*
  * PUT /user/:handle/admin/accept
  */
-export type PutUserAdminAcceptResponse = Record<string, never>;
+export type PutUserAdminAcceptResponse = {};
 
 /*
  * PUT /user/:handle/moderator/accept
  */
-export type PutUserModeratorAcceptResponse = Record<string, never>;
+export type PutUserModeratorAcceptResponse = {};
 
 /*
  * DELETE /user/:handle
  */
-export type DeleteUserResponse = Record<string, never>;
+export type DeleteUserResponse = {};
 
 /*
  * DELETE /user/:handle/subscription
  */
-export type DeleteUserSubscriptionResponse = Record<string, never>;
+export type DeleteUserSubscriptionResponse = {};
 
 /*
  * DELETE /user/:handle/follow
  */
-export type DeleteUserFollowResponse = Record<string, never>;
+export type DeleteUserFollowResponse = {};
 
 /*
  * DELETE /user/:handle/history
  */
-export type DeleteUserHistoryResponse = Record<string, never>;
+export type DeleteUserHistoryResponse = {};
 
 /*
  * DELETE /user/:handle/history/all
  */
-export type DeleteUserEntireHistoryResponse = Record<string, never>;
+export type DeleteUserEntireHistoryResponse = {};
 
 /*
  * DELETE /user/:id/promotion
  */
-export type DeleteUserPromotionResponse = Record<string, never>;
+export type DeleteUserPromotionResponse = {};
 
 /*
  * DELETE /user/:handle/collaboration
  */
-export type DeleteUserCollaborationResponse = Record<string, never>;
+export type DeleteUserCollaborationResponse = {};
 
 /*
  * DELETE /user/:handle/admin
  */
-export type DeleteUserAdminResponse = Record<string, never>;
+export type DeleteUserAdminResponse = {};
 
 /*
  * DELETE /user/:handle/moderator
  */
-export type DeleteUserModeratorResponse = Record<string, never>;
+export type DeleteUserModeratorResponse = {};
 
 /*
  * DELETE /user/:handle/owner/invite
  */
-export type DeleteUserOwnerInviteResponse = Record<string, never>;
+export type DeleteUserOwnerInviteResponse = {};
 
 /*
  * DELETE /user/:handle/collaboration/invite
  */
-export type DeleteUserCollaborationInviteResponse = Record<string, never>;
+export type DeleteUserCollaborationInviteResponse = {};
 
 /*
  * DELETE /user/:handle/admin/invite
  */
-export type DeleteUserAdminInviteResponse = Record<string, never>;
+export type DeleteUserAdminInviteResponse = {};
 
 /*
  * DELETE /user/:handle/moderator/invite
  */
-export type PutUserModeratorInviteResponse = Record<string, never>;
+export type PutUserModeratorInviteResponse = {};
 
 //
 // Channel Responses
@@ -219,7 +219,7 @@ export type PutUserModeratorInviteResponse = Record<string, never>;
 /*
  * POST /channel
  */
-export type PostChannelResponse = Record<string, never>;
+export type PostChannelResponse = {};
 
 /*
  * GET /channel/:channel
@@ -244,122 +244,122 @@ export type GetChannelContentResponse = ChannelContent;
 /*
  * PUT /channel/:channel
  */
-export type PutChannelResponse = Record<string, never>;
+export type PutChannelResponse = {};
 
 /*
  * PUT /channel/:id/handle
  */
-export type PutChannelHandleResponse = Record<string, never>;
+export type PutChannelHandleResponse = {};
 
 /*
  * PUT /channel/:id/avatar
  */
-export type PutChannelAvatarResponse = Record<string, never>;
+export type PutChannelAvatarResponse = {};
 
 /*
  * PUT /channel/:id/banner
  */
-export type PutChannelBannerResponse = Record<string, never>;
+export type PutChannelBannerResponse = {};
 
 /*
  * PUT /channel/:id/poster
  */
-export type PutChannelPosterResponse = Record<string, never>;
+export type PutChannelPosterResponse = {};
 
 /*
  * PUT /channel/:channel/owner/invite
  */
-export type PutChannelOwnerInviteResponse = Record<string, never>;
+export type PutChannelOwnerInviteResponse = {};
 
 /*
  * PUT /channel/:channel/collaborator/invite
  */
-export type PutChannelCollaboratorInviteResponse = Record<string, never>;
+export type PutChannelCollaboratorInviteResponse = {};
 
 /*
  * PUT /channel/:channel/contributor/invite
  */
-export type PutChannelContributorInviteResponse = Record<string, never>;
+export type PutChannelContributorInviteResponse = {};
 
 /*
  * PUT /channel/:channel/contributor/roles
  */
-export type PutChannelContributorRolesResponse = Record<string, never>;
+export type PutChannelContributorRolesResponse = {};
 
 /*
  * PUT /channel/:channel/admin/invite
  */
-export type PutChannelAdminInviteResponse = Record<string, never>;
+export type PutChannelAdminInviteResponse = {};
 
 /*
  * PUT /channel/:channel/admin/settings
  */
-export type PutChannelAdminSettingsResponse = Record<string, never>;
+export type PutChannelAdminSettingsResponse = {};
 
 /*
  * PUT /channel/:channel/moderator/invite
  */
-export type PutChannelModeratorInviteResponse = Record<string, never>;
+export type PutChannelModeratorInviteResponse = {};
 
 /*
  * PUT /channel/:channel/moderator/settings
  */
-export type PutChannelModeratorSettingsResponse = Record<string, never>;
+export type PutChannelModeratorSettingsResponse = {};
 
 /*
  * DELETE /channel/:channel
  */
-export type DeleteChannelResponse = Record<string, never>;
+export type DeleteChannelResponse = {};
 
 /*
  * DELETE /channel/:channel/owner
  */
-export type DeleteChannelOwnerResponse = Record<string, never>;
+export type DeleteChannelOwnerResponse = {};
 
 /*
  * DELETE /channel/:channel/collaborator
  */
-export type DeleteChannelCollaboratorResponse = Record<string, never>;
+export type DeleteChannelCollaboratorResponse = {};
 
 /*
  * DELETE /channel/:channel/contributor
  */
-export type DeleteChannelContributorResponse = Record<string, never>;
+export type DeleteChannelContributorResponse = {};
 
 /*
  * DELETE /channel/:channel/admin
  */
-export type DeleteChannelAdminResponse = Record<string, never>;
+export type DeleteChannelAdminResponse = {};
 
 /*
  * DELETE /channel/:channel/moderator
  */
-export type DeleteChannelModeratorResponse = Record<string, never>;
+export type DeleteChannelModeratorResponse = {};
 
 /*
  * DELETE /channel/:channel/owner/invite
  */
-export type DeleteChannelOwnerInviteResponse = Record<string, never>;
+export type DeleteChannelOwnerInviteResponse = {};
 
 /*
  * DELETE /channel/:channel/collaborator/invite
  */
-export type DeleteChannelCollaboratorInviteResponse = Record<string, never>;
+export type DeleteChannelCollaboratorInviteResponse = {};
 
 /*
  * DELETE /channel/:channel/contributor/invite
  */
-export type DeleteChannelContributorInviteResponse = Record<string, never>;
+export type DeleteChannelContributorInviteResponse = {};
 
 /*
  * DELETE /channel/:channel/admin/invite
  */
-export type DeleteChannelAdminInviteResponse = Record<string, never>;
+export type DeleteChannelAdminInviteResponse = {};
 
 /*
  * DELETE /channel/:channel/moderator/invite
  */
-export type DeleteChannelModeratorInviteResponse = Record<string, never>;
+export type DeleteChannelModeratorInviteResponse = {};
 
 //
 // Video Responses
@@ -368,7 +368,7 @@ export type DeleteChannelModeratorInviteResponse = Record<string, never>;
 /*
  * POST /video
  */
-export type PostVideoResponse = Record<string, never>;
+export type PostVideoResponse = {};
 
 /*
  * GET /video/:id
@@ -378,27 +378,27 @@ export type GetVideoResponse = Video;
 /*
  * PUT /video/:id
  */
-export type PutVideoResponse = Record<string, never>;
+export type PutVideoResponse = {};
 
 /*
  * PUT /video/:id/view
  */
-export type PutVideoViewResponse = Record<string, never>;
+export type PutVideoViewResponse = {};
 
 /*
  * PUT /video/:id/content
  */
-export type PutVideoContentResponse = Record<string, never>;
+export type PutVideoContentResponse = {};
 
 /*
  * PUT /video/:id/report
  */
-export type PutVideoReportResponse = Record<string, never>;
+export type PutVideoReportResponse = {};
 
 /*
  * DELETE /video/:id
  */
-export type DeleteVideoResponse = Record<string, never>;
+export type DeleteVideoResponse = {};
 
 //
 // Show Responses
@@ -407,12 +407,12 @@ export type DeleteVideoResponse = Record<string, never>;
 /*
  * POST /show
  */
-export type PostShowResponse = Record<string, never>;
+export type PostShowResponse = {};
 
 /*
  * POST /show/:id/episode
  */
-export type PostShowEpisodeResponse = Record<string, never>;
+export type PostShowEpisodeResponse = {};
 
 /*
  * GET /show/:id
@@ -422,22 +422,22 @@ export type GetShowResponse = Show;
 /*
  * PUT /show/:id
  */
-export type PutShowResponse = Record<string, never>;
+export type PutShowResponse = {};
 
 /*
  * PUT /show/:id/episode
  */
-export type PutShowEpisodeResponse = Record<string, never>;
+export type PutShowEpisodeResponse = {};
 
 /*
  * PUT /show/:id/content
  */
-export type PutShowContentResponse = Record<string, never>;
+export type PutShowContentResponse = {};
 
 /*
  * DELETE /show/:id
  */
-export type DeleteShowResponse = Record<string, never>;
+export type DeleteShowResponse = {};
 
 //
 // Playlist Responses
@@ -446,7 +446,7 @@ export type DeleteShowResponse = Record<string, never>;
 /*
  * POST /playlist
  */
-export type PostPlaylistResponse = Record<string, never>;
+export type PostPlaylistResponse = {};
 
 /*
  * GET /playlist/:id
@@ -456,17 +456,17 @@ export type GetPlaylistResponse = Playlist;
 /*
  * PUT /playlist/:id
  */
-export type PutPlaylistResponse = Record<string, never>;
+export type PutPlaylistResponse = {};
 
 /*
  * DELETE /playlist/:id
  */
-export type DeletePlaylistResponse = Record<string, never>;
+export type DeletePlaylistResponse = {};
 
 /*
  * DELETE /playlist/:id/video
  */
-export type DeletePlaylistVideoResponse = Record<string, never>;
+export type DeletePlaylistVideoResponse = {};
 
 //
 // Listing Responses
@@ -475,7 +475,7 @@ export type DeletePlaylistVideoResponse = Record<string, never>;
 /*
  * GET /listing/featured/channels
  */
-export type GetListingFeaturedChannelsResponse = { content: Array<Browsable> };
+export type GetListingFeaturedChannelsResponse = { channels: Array<Channel> };
 
 /*
  * GET /listing/videos/recommended

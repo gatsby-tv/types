@@ -41,17 +41,17 @@ export type GetAuthUserRequest = Pick<IUserAccount, "_id">;
 /*
  * GET /auth/user/:id/exists
  */
-export type GetAuthUserExistsRequest = Record<string, never>;
+export type GetAuthUserExistsRequest = {};
 
 /*
  * GET /auth/user/handle/:handle/exists
  */
-export type GetAuthUserHandleExistsRequest = Record<string, never>;
+export type GetAuthUserHandleExistsRequest = {};
 
 /*
  * GET /auth/channel/handle/:handle/exists
  */
-export type GetAuthChannelHandleExistsRequest = Record<string, never>;
+export type GetAuthChannelHandleExistsRequest = {};
 
 //
 // User Requests
@@ -60,32 +60,32 @@ export type GetAuthChannelHandleExistsRequest = Record<string, never>;
 /*
  * GET /user/{:id,:handle}
  */
-export type GetUserAccountRequest = Record<string, never>;
+export type GetUserAccountRequest = {};
 
 /*
  * GET /user/:handle/public
  */
-export type GetUserPublicRequest = Record<string, never>;
+export type GetUserPublicRequest = {};
 
 /*
  * GET /user/:handle/private
  */
-export type GetUserPrivateRequest = Record<string, never>;
+export type GetUserPrivateRequest = {};
 
 /*
  * GET /user/:handle/feeds
  */
-export type GetUserFeedsRequest = Record<string, never>;
+export type GetUserFeedsRequest = {};
 
 /*
  * GET /user/:id/history
  */
-export type GetUserHistoryRequest = Record<string, never>;
+export type GetUserHistoryRequest = {};
 
 /*
  * GET /user/:id/promotions
  */
-export type GetUserPromotionsRequest = Record<string, never>;
+export type GetUserPromotionsRequest = {};
 
 /*
  * PUT /user/:id
@@ -97,17 +97,17 @@ export type PutUserRequest = Partial<
 /*
  * PUT /user/:id/handle
  */
-export type PutUserHandleRequest = Record<string, never>;
+export type PutUserHandleRequest = {};
 
 /*
  * PUT /user/:id/avatar
  */
-export type PutUserAvatarRequest = Record<string, never>;
+export type PutUserAvatarRequest = {};
 
 /*
  * PUT /user/:id/banner
  */
-export type PutUserBannerRequest = Record<string, never>;
+export type PutUserBannerRequest = {};
 
 /*
  * PUT /user/:id/subscription
@@ -164,7 +164,7 @@ export type PutUserModerationAcceptRequest = { channel: ChannelID };
 /*
  * DELETE /user/:handle
  */
-export type DeleteUserRequest = Record<string, never>;
+export type DeleteUserRequest = {};
 
 /*
  * DELETE /user/:handle/subscription
@@ -184,7 +184,7 @@ export type DeleteUserHistoryRequest = { video: VideoID };
 /*
  * DELETE /user/:handle/history/all
  */
-export type DeleteUserEntireHistoryRequest = Record<string, never>;
+export type DeleteUserEntireHistoryRequest = {};
 
 /*
  * DELETE /user/:id/promotion
@@ -235,22 +235,22 @@ export type PostChannelRequest = Pick<IChannelAccount, "handle" | "name"> & {
 /*
  * GET /channel/:handle
  */
-export type GetChannelAccountRequest = Record<string, never>;
+export type GetChannelAccountRequest = {};
 
 /*
  * GET /channel/:handle/public
  */
-export type GetChannePublicRequest = Record<string, never>;
+export type GetChannePublicRequest = {};
 
 /*
  * GET /channel/:handle/private
  */
-export type GetChannelPrivateRequest = Record<string, never>;
+export type GetChannelPrivateRequest = {};
 
 /*
  * GET /channel/:handle/content
  */
-export type GetChannelContentRequest = Record<string, never>;
+export type GetChannelContentRequest = {};
 
 /*
  * PUT /channel/:handle
@@ -262,22 +262,22 @@ export type PutChannelRequest = Partial<
 /*
  * PUT /channel/:id/handle
  */
-export type PutChannelHandleRequest = Record<string, never>;
+export type PutChannelHandleRequest = {};
 
 /*
  * PUT /channel/:id/avatar
  */
-export type PutChannelAvatarRequest = Record<string, never>;
+export type PutChannelAvatarRequest = {};
 
 /*
  * PUT /channel/:id/banner
  */
-export type PutChannelBannerRequest = Record<string, never>;
+export type PutChannelBannerRequest = {};
 
 /*
  * PUT /channel/:id/poster
  */
-export type PutChannelPosterRequest = Record<string, never>;
+export type PutChannelPosterRequest = {};
 
 /*
  * PUT /channel/:id/settings
@@ -402,7 +402,7 @@ export type PostVideoRequest = Omit<
 /*
  * GET /video/:id
  */
-export type GetVideoRequest = Record<string, never>;
+export type GetVideoRequest = {};
 
 /*
  * PUT /video/:id
@@ -414,7 +414,7 @@ export type PutVideoRequest = Partial<
 /*
  * PUT /video/:id/view
  */
-export type PutVideoViewRequest = Record<string, never>;
+export type PutVideoViewRequest = {};
 
 /*
  * PUT /video/:id/content
@@ -434,7 +434,7 @@ export type PutVideoReportRequest = {
 /*
  * DELETE /video/:id
  */
-export type DeleteVideoRequest = Record<string, never>;
+export type DeleteVideoRequest = {};
 
 //
 // Show Requests
@@ -456,7 +456,7 @@ export type PostShowEpisodeRequest = {
 /*
  * GET /show/:id
  */
-export type GetShowRequest = Record<string, never>;
+export type GetShowRequest = {};
 
 /*
  * PUT /show/:id
@@ -486,7 +486,7 @@ export type PutShowContentRequest =
 /*
  * DELETE /show/:id
  */
-export type DeleteShowRequest = Record<string, never>;
+export type DeleteShowRequest = {};
 
 //
 // Playlist Requests
@@ -503,7 +503,7 @@ export type PostPlaylistRequest = Omit<
 /*
  * GET /playlist/:id
  */
-export type GetPlaylistRequest = Record<string, never>;
+export type GetPlaylistRequest = {};
 
 /*
  * PUT /playlist/:id
@@ -520,7 +520,7 @@ export type PutPlaylistContentRequest = Pick<IPlaylist, "videos">;
 /*
  * DELETE /playlist/:id
  */
-export type DeletePlaylistRequest = Record<string, never>;
+export type DeletePlaylistRequest = {};
 
 //
 // Listing Requests
@@ -529,29 +529,29 @@ export type DeletePlaylistRequest = Record<string, never>;
 /*
  * GET /listing/featured/channels
  */
-export type GetListingFeaturedChannelsRequest = Record<string, never>;
+export type GetListingFeaturedChannelsRequest = {};
 
 /*
  * GET /listing/videos/recommended
  */
-export type GetListingRecommendedVideosRequest = Record<string, never>;
+export type GetListingRecommendedVideosRequest = {};
 
 /*
  * GET /listing/videos/popular
  */
-export type GetListingPopularVideosRequest = Record<string, never>;
+export type GetListingPopularVideosRequest = {};
 
 /*
  * GET /listing/videos/new
  */
-export type GetListingNewVideosRequest = Record<string, never>;
+export type GetListingNewVideosRequest = {};
 
 /*
  * GET /listing/subscriptions
  */
-export type GetListingSubscriptionsRequest = Record<string, never>;
+export type GetListingSubscriptionsRequest = {};
 
 /*
  * GET /listing/topics
  */
-export type GetListingTopicsRequest = Record<string, never>;
+export type GetListingTopicsRequest = {};
