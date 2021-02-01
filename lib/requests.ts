@@ -18,6 +18,10 @@ import {
   ModerationSettings,
 } from "@lib/settings";
 
+//
+// Authentication Requests
+// --------------------------------------------------
+
 /*
  * POST /auth/signup
  *
@@ -30,13 +34,6 @@ export type PostAuthSignupRequest = Pick<
   IUserAccount,
   "_id" | "handle" | "name"
 >;
-
-/*
- * GET /auth/user/:id
- *
- * Requires authorization.
- */
-export type GetAuthUserRequest = Pick<IUserAccount, "_id">;
 
 /*
  * GET /auth/user/:id/exists

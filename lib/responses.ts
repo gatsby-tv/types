@@ -29,11 +29,6 @@ export type ErrorResponse = { error: WestEggError };
 export type PostAuthSignupResponse = { token: Token };
 
 /*
- * GET /auth/user/:id
- */
-export type GetAuthUserResponse = { token: Token };
-
-/*
  * GET /auth/user/:id/exists
  */
 export type GetAuthUserExistsResponse = {};
