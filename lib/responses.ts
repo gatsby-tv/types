@@ -83,6 +83,16 @@ export type GetUserHistoryResponse = UserHistory;
 export type GetUserPromotionsResponse = UserPromotions;
 
 /*
+ * GET /user/:id/listing/recommended
+ */
+export type GetUserListingRecommendedResponse = { content: Array<Browsable> };
+
+/*
+ * GET /user/:id/listing/subscriptions
+ */
+export type GetUserListingSubscriptionsResponse = { content: Array<Browsable> };
+
+/*
  * PUT /user/:id
  */
 export type PutUserResponse = {};
@@ -478,11 +488,6 @@ export type DeletePlaylistVideoResponse = {};
 export type GetListingFeaturedChannelsResponse = { channels: Array<Channel> };
 
 /*
- * GET /listing/videos/recommended
- */
-export type GetListingRecommendedVideosResponse = { content: Array<Browsable> };
-
-/*
  * GET /listing/videos/popular
  */
 export type GetListingPopularVideosResponse = { content: Array<Browsable> };
@@ -491,11 +496,6 @@ export type GetListingPopularVideosResponse = { content: Array<Browsable> };
  * GET /listing/videos/new
  */
 export type GetListingNewVideosResponse = { content: Array<Browsable> };
-
-/*
- * GET /listing/subscriptions
- */
-export type GetListingSubscriptionsResponse = { content: Array<Browsable> };
 
 /*
  * GET /listing/topics

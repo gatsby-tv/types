@@ -88,6 +88,16 @@ export type GetUserHistoryRequest = {};
 export type GetUserPromotionsRequest = {};
 
 /*
+ * GET /user/:id/listing/recommended
+ */
+export type GetUserListingRecommendedRequest = {};
+
+/*
+ * GET /user/:id/listing/subscriptions
+ */
+export type GetUserListingSubscriptionsRequest = {};
+
+/*
  * PUT /user/:id
  */
 export type PutUserRequest = Partial<
@@ -532,11 +542,6 @@ export type DeletePlaylistRequest = {};
 export type GetListingFeaturedChannelsRequest = {};
 
 /*
- * GET /listing/videos/recommended
- */
-export type GetListingRecommendedVideosRequest = {};
-
-/*
  * GET /listing/videos/popular
  */
 export type GetListingPopularVideosRequest = {};
@@ -545,11 +550,6 @@ export type GetListingPopularVideosRequest = {};
  * GET /listing/videos/new
  */
 export type GetListingNewVideosRequest = {};
-
-/*
- * GET /listing/subscriptions
- */
-export type GetListingSubscriptionsRequest = {};
 
 /*
  * GET /listing/topics
