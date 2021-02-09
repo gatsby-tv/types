@@ -1,3 +1,4 @@
+import { PagedRequest } from "@lib/types";
 import {
   IUserAccount,
   IChannelAccount,
@@ -10,6 +11,8 @@ import {
   IPlaylist,
 } from "@lib/entities";
 import { Report } from "@lib/report";
+import { Topic } from "@lib/topic";
+import { Genre } from "@lib/genre";
 import { CID, ChannelID, UserID, VideoID } from "@lib/shared";
 import { AdminPermissions } from "@lib/permissions";
 import {
@@ -87,12 +90,12 @@ export type GetUserPromotionsRequest = {};
 /*
  * GET /user/:id/listing/recommended
  */
-export type GetUserListingRecommendedRequest = {};
+export type GetUserListingRecommendedRequest = PagedRequest;
 
 /*
  * GET /user/:id/listing/subscriptions
  */
-export type GetUserListingSubscriptionsRequest = {};
+export type GetUserListingSubscriptionsRequest = PagedRequest;
 
 /*
  * PUT /user/:id
@@ -412,6 +415,11 @@ export type PostVideoRequest = Omit<
 export type GetVideoRequest = {};
 
 /*
+ * GET /video/:id/listing/related
+ */
+export type GetVideoListingRelatedRequest = PagedRequest;
+
+/*
  * PUT /video/:id
  */
 export type PutVideoRequest = Partial<
@@ -541,14 +549,20 @@ export type GetListingFeaturedChannelsRequest = {};
 /*
  * GET /listing/videos/popular
  */
-export type GetListingPopularVideosRequest = {};
+export type GetListingPopularVideosRequest = PagedRequest & {
+  topic?: Topic,
+  genre?: Genre,
+};
 
 /*
  * GET /listing/videos/new
  */
-export type GetListingNewVideosRequest = {};
+export type GetListingNewVideosRequest = PagedRequest & {
+  topic?: Topic,
+  genre?: Genre,
+};
 
 /*
  * GET /listing/topics
  */
-export type GetListingTopicsRequest = {};
+export type GetListingTopicsRequest = PagedRequest;

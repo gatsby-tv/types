@@ -14,6 +14,12 @@ import {
   ISeasonedShow,
   IPlaylist,
 } from "@lib/entities";
+import { Topic } from "@lib/topic";
+
+export type PagedRequest = {
+  page?: number;
+  perPage?: number;
+};
 
 /*
  * Format of JWT used for authentication requests.
@@ -135,7 +141,11 @@ export type Playlist = Override<
 
 export type Browsable = BasicVideo | SerialVideo | Show;
 
-export type PaginatedResponse<T> = {
-  page: number;
-  response: T;
+export type Content = Video | Playlist | Show;
+
+export type Collection = Show | Playlist;
+
+export type TopicBrowsable = {
+  topic: Topic;
+  content: Browsable[];
 };

@@ -12,6 +12,7 @@ import {
   UserPromotions,
   Video,
   Browsable,
+  TopicBrowsable,
   Show,
   Playlist,
 } from "@lib/types";
@@ -80,12 +81,12 @@ export type GetUserPromotionsResponse = UserPromotions;
 /*
  * GET /user/:id/listing/recommended
  */
-export type GetUserListingRecommendedResponse = { content: Array<Browsable> };
+export type GetUserListingRecommendedResponse = Array<Browsable>;
 
 /*
  * GET /user/:id/listing/subscriptions
  */
-export type GetUserListingSubscriptionsResponse = { content: Array<Browsable> };
+export type GetUserListingSubscriptionsResponse = Array<Video>;
 
 /*
  * PUT /user/:id
@@ -381,6 +382,11 @@ export type PostVideoResponse = {};
 export type GetVideoResponse = Video;
 
 /*
+ * GET /video/:id/listing/related
+ */
+export type GetVideoListingRelatedResponse = Array<Browsable>;
+
+/*
  * PUT /video/:id
  */
 export type PutVideoResponse = {};
@@ -480,21 +486,19 @@ export type DeletePlaylistVideoResponse = {};
 /*
  * GET /listing/featured/channels
  */
-export type GetListingFeaturedChannelsResponse = { channels: Array<Channel> };
+export type GetListingFeaturedChannelsResponse = Array<Channel>;
 
 /*
  * GET /listing/videos/popular
  */
-export type GetListingPopularVideosResponse = { content: Array<Browsable> };
+export type GetListingPopularVideosResponse = Array<Browsable>;
 
 /*
  * GET /listing/videos/new
  */
-export type GetListingNewVideosResponse = { content: Array<Browsable> };
+export type GetListingNewVideosResponse = Array<Browsable>;
 
 /*
  * GET /listing/topics
  */
-export type GetListingTopicsResponse = {
-  topics: Array<{ topic: string; content: Array<Browsable> }>;
-};
+export type GetListingTopicsResponse = Array<TopicBrowsable>;
