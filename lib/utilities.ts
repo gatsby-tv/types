@@ -9,41 +9,84 @@ import {
   IPlaylist,
   ICollection,
 } from "@lib/entities";
-import { PaginatedResponse } from "@lib/types";
+import {
+  Video,
+  BasicVideo,
+  SerialVideo,
+  EpisodicVideo,
+  SeasonedShow,
+  EpisodicShow,
+  Show,
+  Playlist,
+  Content,
+} from "@lib/types";
 
-export function isPaginated<T>(
-  response: T | PaginatedResponse<T>
-): response is PaginatedResponse<T> {
-  return (
-    (response as PaginatedResponse<T>).page !== undefined &&
-    (response as PaginatedResponse<T>).response !== undefined
-  );
-}
+/*
+ * Entity Utilities
+ */
 
-export function isSerialVideo(content: IVideo): content is ISerialVideo {
+export function isISerialVideo(content: IVideo): content is ISerialVideo {
   return (content as ISerialVideo).playlist !== undefined;
 }
 
-export function isEpisodicVideo(content: IVideo): content is IEpisodicVideo {
+export function isIEpisodicVideo(content: IVideo): content is IEpisodicVideo {
   return (content as IEpisodicVideo).show !== undefined;
 }
 
-export function isBasicVideo(content: IVideo): content is IBasicVideo {
-  return !isSerialVideo(content) && !isEpisodicVideo(content);
+export function isIBasicVideo(content: IVideo): content is IBasicVideo {
+  return !isISerialVideo(content) && !isIEpisodicVideo(content);
 }
 
-export function isSeasonedShow(show: ICollection): show is ISeasonedShow {
+export function isISeasonedShow(show: ICollection): show is ISeasonedShow {
   return (show as ISeasonedShow).seasons !== undefined;
 }
 
-export function isEpisodicShow(show: ICollection): show is IEpisodicShow {
+export function isIEpisodicShow(show: ICollection): show is IEpisodicShow {
   return (show as IEpisodicShow).episodes !== undefined;
 }
 
-export function isShow(collection: ICollection): collection is IShow {
-  return isSeasonedShow(collection) || isEpisodicShow(collection);
+export function isIShow(collection: ICollection): collection is IShow {
+  return isISeasonedShow(collection) || isIEpisodicShow(collection);
 }
 
-export function isPlaylist(collection: ICollection): collection is IPlaylist {
+export function isIPlaylist(collection: ICollection): collection is IPlaylist {
   return (collection as IPlaylist).videos !== undefined;
+}
+
+/*
+ * Types Utilties
+ */
+
+export function isVideo(content: Content): content is Video {
+  return (content as Video).content !== undefined;
+}
+
+export function isSerialVideo(content: Content): content is SerialVideo {
+  return (content as SerialVideo).playlist !== undefined;
+}
+
+export function isEpisodicVideo(content: Content): content is EpisodicVideo {
+  return (content as EpisodicVideo).show !== undefined;
+}
+
+export function isBasicVideo(content: Content): content is BasicVideo {
+  return (
+    isVideo(content) && !isSerialVideo(content) && !isEpisodicVideo(content)
+  );
+}
+
+export function isSeasonedShow(content: Content): content is SeasonedShow {
+  return (content as SeasonedShow).seasons !== undefined;
+}
+
+export function isEpisodicShow(content: Content): content is EpisodicShow {
+  return (content as EpisodicShow).episodes !== undefined;
+}
+
+export function isShow(content: Content): content is Show {
+  return isSeasonedShow(content) || isEpisodicShow(content);
+}
+
+export function isPlaylist(content: Content): content is Playlist {
+  return (content as Playlist).videos !== undefined;
 }
