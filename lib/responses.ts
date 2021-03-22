@@ -12,7 +12,7 @@ import {
   UserPromotions,
   Video,
   Browsable,
-  TopicBrowsable,
+  BrowsableVideo,
   Show,
   Playlist,
 } from "@lib/types";
@@ -86,7 +86,7 @@ export type GetUserListingRecommendedResponse = Array<Browsable>;
 /*
  * GET /user/:id/listing/subscriptions
  */
-export type GetUserListingSubscriptionsResponse = Array<Video>;
+export type GetUserListingSubscriptionsResponse = Array<BrowsableVideo>;
 
 /*
  * PUT /user/:id
@@ -497,8 +497,3 @@ export type GetListingPopularVideosResponse = Array<Browsable>;
  * GET /listing/videos/new
  */
 export type GetListingNewVideosResponse = Array<Browsable>;
-
-/*
- * GET /listing/topics
- */
-export type GetListingTopicsResponse = Array<TopicBrowsable>;

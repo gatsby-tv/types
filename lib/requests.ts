@@ -561,8 +561,3 @@ export type GetListingNewVideosRequest = PagedRequest & {
   topic?: Topic,
   genre?: Genre,
 };
-
-/*
- * GET /listing/topics
- */
-export type GetListingTopicsRequest = PagedRequest;
