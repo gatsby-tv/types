@@ -12,6 +12,7 @@ import {
   IBasicVideo,
   IVideoReport,
   ISeasonedShow,
+  IEpisodicShow,
   IPlaylist,
 } from "@lib/entities";
 import { Topic } from "@lib/topic";
@@ -38,6 +39,8 @@ export interface Token {
 }
 
 type Override<T, K> = Omit<T, keyof K> & K;
+
+export type Credits = "collaborators" | "contributors" | "sponsors";
 
 export type Channel = IChannelAccount;
 
@@ -100,6 +103,10 @@ export type EpisodicVideo = BasicVideo & { show: Show };
 
 export type Video = BasicVideo | SerialVideo | EpisodicVideo;
 
+export type BrowsableBasicVideo = Omit<BasicVideo, Credits>;
+
+export type BrowsableVideo = Omit<Video, Credits>;
+
 export type VideoReport = IVideoReport;
 
 /*
@@ -108,7 +115,7 @@ export type VideoReport = IVideoReport;
  */
 export type Season = {
   title?: string;
-  episodes: Array<BasicVideo>;
+  episodes: Array<BrowsableBasicVideo>;
 };
 
 export type SeasonedShow = Override<
@@ -120,9 +127,14 @@ export type SeasonedShow = Override<
   }
 >;
 
-export type EpisodicShow = Omit<SeasonedShow, "seasons"> & {
-  episodes: Array<BasicVideo>;
-};
+export type EpisodicShow = Override<
+  IEpisodicShow,
+  {
+    channel: Channel;
+    collaborators: Array<User>;
+    episodes: Array<BrowsableBasicVideo>;
+  }
+>;
 
 export type Show = SeasonedShow | EpisodicShow;
 
@@ -135,17 +147,15 @@ export type Playlist = Override<
   {
     channel: Channel;
     collaborators: Array<User>;
-    videos: Array<BasicVideo>;
+    videos: Array<BrowsableBasicVideo>;
   }
 >;
 
-export type Browsable = BasicVideo | SerialVideo | Show;
+export type Browsable = Omit<
+  BasicVideo | SerialVideo | Playlist | Show,
+  Credits
+>;
 
 export type Content = Video | Playlist | Show;
 
 export type Collection = Show | Playlist;
-
-export type TopicBrowsable = {
-  topic: Topic;
-  content: Browsable[];
-};
