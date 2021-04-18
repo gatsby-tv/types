@@ -151,11 +151,6 @@ export type Playlist = Override<
   }
 >;
 
-export type Browsable = Omit<
-  BasicVideo | SerialVideo | Playlist | Show,
-  Credits
->;
-
+export type Browsable = Omit<Video | Playlist | Show, Credits>;
 export type Content = Video | Playlist | Show;
-
 export type Collection = Show | Playlist;
