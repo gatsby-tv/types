@@ -18,7 +18,7 @@ import {
   EpisodicShow,
   Show,
   Playlist,
-  Content,
+  Browsable,
 } from "@lib/types";
 
 /*
@@ -57,36 +57,36 @@ export function isIPlaylist(collection: ICollection): collection is IPlaylist {
  * Types Utilties
  */
 
-export function isVideo(content: Content): content is Video {
+export function isVideo(content: Browsable): content is Video {
   return (content as Video).content !== undefined;
 }
 
-export function isSerialVideo(content: Content): content is SerialVideo {
+export function isSerialVideo(content: Browsable): content is SerialVideo {
   return (content as SerialVideo).playlist !== undefined;
 }
 
-export function isEpisodicVideo(content: Content): content is EpisodicVideo {
+export function isEpisodicVideo(content: Browsable): content is EpisodicVideo {
   return (content as EpisodicVideo).show !== undefined;
 }
 
-export function isBasicVideo(content: Content): content is BasicVideo {
+export function isBasicVideo(content: Browsable): content is BasicVideo {
   return (
     isVideo(content) && !isSerialVideo(content) && !isEpisodicVideo(content)
   );
 }
 
-export function isSeasonedShow(content: Content): content is SeasonedShow {
+export function isSeasonedShow(content: Browsable): content is SeasonedShow {
   return (content as SeasonedShow).seasons !== undefined;
 }
 
-export function isEpisodicShow(content: Content): content is EpisodicShow {
+export function isEpisodicShow(content: Browsable): content is EpisodicShow {
   return (content as EpisodicShow).episodes !== undefined;
 }
 
-export function isShow(content: Content): content is Show {
+export function isShow(content: Browsable): content is Show {
   return isSeasonedShow(content) || isEpisodicShow(content);
 }
 
-export function isPlaylist(content: Content): content is Playlist {
+export function isPlaylist(content: Browsable): content is Playlist {
   return (content as Playlist).videos !== undefined;
 }

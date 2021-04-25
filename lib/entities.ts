@@ -171,11 +171,6 @@ export type IUser = IUserAccount &
  * On its own, `IBasicVideo` represents a single video that is not
  * associated with a playlist or show.
  *
- * Nontrivially, the `content` key of a video may either be a single
- * IPFS hash or several. When there is more than one hash, the video
- * is said to be "partitioned", wherein each element of the array
- * constitutes an individual part of an otherwise cohesive unit.
- *
  * Additionally, the `creationDate` key belonging to `ContentInfo` is
  * replaced with `releaseDate`. This is to suggest the slight increase
  * in flexability to its value. Namely, `releaseDate` is allowed to
@@ -187,11 +182,13 @@ export type IUser = IUserAccount &
 export interface IBasicVideo extends Omit<ContentInfo, "creationDate"> {
   readonly _id: VideoID;
   readonly releaseDate: Date;
+  content: CID;
   duration: number;
+  next?: VideoID;
+  previous?: VideoID;
   contributors: Array<UserID>;
   contributions: Contributions;
   sponsors: Array<UserID>;
-  content: CID | Array<CID>;
 }
 
 /*
