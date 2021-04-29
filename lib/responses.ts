@@ -18,7 +18,11 @@ import {
 } from "@lib/types";
 import { WestEggError } from "@lib/errors";
 
-export type ErrorResponse = { error: WestEggError };
+// Base response type, nullable error
+// All other responses should extend this type
+export type Response = {
+  error?: WestEggError
+};
 
 //
 // Authentication Responses
@@ -27,22 +31,22 @@ export type ErrorResponse = { error: WestEggError };
 /*
  * POST /auth/signup
  */
-export type PostAuthSignupResponse = { token: Token };
+export type PostAuthSignupResponse = { token: Token } | Response;
 
 /*
  * GET /auth/user/:id/exists
  */
-export type GetAuthUserExistsResponse = {};
+export type GetAuthUserExistsResponse = {} | Response;
 
 /*
  * GET /auth/user/handle/:handle/exists
  */
-export type GetAuthUserHandleExistsResponse = {};
+export type GetAuthUserHandleExistsResponse = {} | Response;
 
 /*
  * GET /auth/channel/handle/:handle/exists
  */
-export type GetAuthChannelHandleExistsResponse = {};
+export type GetAuthChannelHandleExistsResponse = {} | Response;
 
 //
 // User Responses
@@ -51,172 +55,172 @@ export type GetAuthChannelHandleExistsResponse = {};
 /*
  * GET /user/{:id,:handle}
  */
-export type GetUserAccountResponse = User;
+export type GetUserAccountResponse = User | Response;
 
 /*
  * GET /user/:id/public
  */
-export type GetUserPublicResponse = UserPublicInfo;
+export type GetUserPublicResponse = UserPublicInfo | Response;
 
 /*
  * GET /user/:id/private
  */
-export type GetUserPrivateResponse = UserPrivateInfo;
+export type GetUserPrivateResponse = UserPrivateInfo | Response;
 
 /*
  * GET /user/:id/feeds
  */
-export type GetUserFeedsResponse = UserContentFeeds;
+export type GetUserFeedsResponse = UserContentFeeds | Response;
 
 /*
  * GET /user/:id/history
  */
-export type GetUserHistoryResponse = UserHistory;
+export type GetUserHistoryResponse = UserHistory | Response;
 
 /*
  * GET /user/:id/promotions
  */
-export type GetUserPromotionsResponse = UserPromotions;
+export type GetUserPromotionsResponse = UserPromotions | Response;
 
 /*
  * GET /user/:id/listing/recommended
  */
-export type GetUserListingRecommendedResponse = Array<Browsable>;
+export type GetUserListingRecommendedResponse = Array<Browsable> | Response;
 
 /*
  * GET /user/:id/listing/subscriptions
  */
-export type GetUserListingSubscriptionsResponse = Array<BrowsableVideo>;
+export type GetUserListingSubscriptionsResponse = Array<BrowsableVideo> | Response;
 
 /*
  * PUT /user/:id
  */
-export type PutUserResponse = {};
+export type PutUserResponse = {} | Response;
 
 /*
  * PUT /user/:id/handle
  */
-export type PutUserHandleResponse = {};
+export type PutUserHandleResponse = {} | Response;
 
 /*
  * PUT /user/:id/avatar
  */
-export type PutUserAvatarResponse = {};
+export type PutUserAvatarResponse = {} | Response;
 
 /*
  * PUT /user/:id/banner
  */
-export type PutUserBannerResponse = {};
+export type PutUserBannerResponse = {} | Response;
 
 /*
  * PUT /user/:id/subscription
  */
-export type PutUserSubscriptionResponse = {};
+export type PutUserSubscriptionResponse = {} | Response;
 
 /*
  * PUT /user/:id/follow
  */
-export type PutUserFollowResponse = {};
+export type PutUserFollowResponse = {} | Response;
 
 /*
  * PUT /user/:id/history
  */
-export type PutUserHistoryResponse = {};
+export type PutUserHistoryResponse = {} | Response;
 
 /*
  * PUT /user/:id/promotion
  */
-export type PutUserPromotionResponse = {};
+export type PutUserPromotionResponse = {} | Response;
 
 /*
  * PUT /user/:id/settings
  */
-export type PutUserSettingsResponse = {};
+export type PutUserSettingsResponse = {} | Response;
 
 /*
  * PUT /user/:id/owner/accept
  */
-export type PutUserOwnerAcceptResponse = {};
+export type PutUserOwnerAcceptResponse = {} | Response;
 
 /*
  * PUT /user/:id/collaboration/accept
  */
-export type PutUserCollaborationAcceptResponse = {};
+export type PutUserCollaborationAcceptResponse = {} | Response;
 
 /*
  * PUT /user/:id/admin/accept
  */
-export type PutUserAdminAcceptResponse = {};
+export type PutUserAdminAcceptResponse = {} | Response;
 
 /*
  * PUT /user/:id/moderator/accept
  */
-export type PutUserModeratorAcceptResponse = {};
+export type PutUserModeratorAcceptResponse = {} | Response;
 
 /*
  * DELETE /user/:id
  */
-export type DeleteUserResponse = {};
+export type DeleteUserResponse = {} | Response;
 
 /*
  * DELETE /user/:id/subscription
  */
-export type DeleteUserSubscriptionResponse = {};
+export type DeleteUserSubscriptionResponse = {} | Response;
 
 /*
  * DELETE /user/:id/follow
  */
-export type DeleteUserFollowResponse = {};
+export type DeleteUserFollowResponse = {} | Response;
 
 /*
  * DELETE /user/:id/history
  */
-export type DeleteUserHistoryResponse = {};
+export type DeleteUserHistoryResponse = {} | Response;
 
 /*
  * DELETE /user/:id/history/all
  */
-export type DeleteUserEntireHistoryResponse = {};
+export type DeleteUserEntireHistoryResponse = {} | Response;
 
 /*
  * DELETE /user/:id/promotion
  */
-export type DeleteUserPromotionResponse = {};
+export type DeleteUserPromotionResponse = {} | Response;
 
 /*
  * DELETE /user/:id/collaboration
  */
-export type DeleteUserCollaborationResponse = {};
+export type DeleteUserCollaborationResponse = {} | Response;
 
 /*
  * DELETE /user/:id/admin
  */
-export type DeleteUserAdminResponse = {};
+export type DeleteUserAdminResponse = {} | Response;
 
 /*
  * DELETE /user/:id/moderator
  */
-export type DeleteUserModeratorResponse = {};
+export type DeleteUserModeratorResponse = {} | Response;
 
 /*
  * DELETE /user/:id/owner/invite
  */
-export type DeleteUserOwnerInviteResponse = {};
+export type DeleteUserOwnerInviteResponse = {} | Response;
 
 /*
  * DELETE /user/:id/collaboration/invite
  */
-export type DeleteUserCollaborationInviteResponse = {};
+export type DeleteUserCollaborationInviteResponse = {} | Response;
 
 /*
  * DELETE /user/:id/admin/invite
  */
-export type DeleteUserAdminInviteResponse = {};
+export type DeleteUserAdminInviteResponse = {} | Response;
 
 /*
  * DELETE /user/:id/moderator/invite
  */
-export type PutUserModeratorInviteResponse = {};
+export type PutUserModeratorInviteResponse = {} | Response;
 
 //
 // Channel Responses
@@ -225,147 +229,147 @@ export type PutUserModeratorInviteResponse = {};
 /*
  * POST /channel
  */
-export type PostChannelResponse = {};
+export type PostChannelResponse = {} | Response;
 
 /*
  * GET /channel/{:id,:handle}
  */
-export type GetChannelAccountResponse = Channel;
+export type GetChannelAccountResponse = Channel | Response;
 
 /*
  * GET /channel/:id/public
  */
-export type GetChannelPublicResponse = ChannelPublicInfo;
+export type GetChannelPublicResponse = ChannelPublicInfo | Response;
 
 /*
  * GET /channel/:id/private
  */
-export type GetChannelPrivateResponse = ChannelPrivateInfo;
+export type GetChannelPrivateResponse = ChannelPrivateInfo | Response;
 
 /*
  * GET /channel/:id/content
  */
-export type GetChannelContentResponse = ChannelContent;
+export type GetChannelContentResponse = ChannelContent | Response;
 
 /*
  * PUT /channel/:id
  */
-export type PutChannelResponse = {};
+export type PutChannelResponse = {} | Response;
 
 /*
  * PUT /channel/:id/handle
  */
-export type PutChannelHandleResponse = {};
+export type PutChannelHandleResponse = {} | Response;
 
 /*
  * PUT /channel/:id/avatar
  */
-export type PutChannelAvatarResponse = {};
+export type PutChannelAvatarResponse = {} | Response;
 
 /*
  * PUT /channel/:id/banner
  */
-export type PutChannelBannerResponse = {};
+export type PutChannelBannerResponse = {} | Response;
 
 /*
  * PUT /channel/:id/poster
  */
-export type PutChannelPosterResponse = {};
+export type PutChannelPosterResponse = {} | Response;
 
 /*
  * PUT /channel/:id/owner/invite
  */
-export type PutChannelOwnerInviteResponse = {};
+export type PutChannelOwnerInviteResponse = {} | Response;
 
 /*
  * PUT /channel/:id/collaborator/invite
  */
-export type PutChannelCollaboratorInviteResponse = {};
+export type PutChannelCollaboratorInviteResponse = {} | Response;
 
 /*
  * PUT /channel/:id/contributor/invite
  */
-export type PutChannelContributorInviteResponse = {};
+export type PutChannelContributorInviteResponse = {} | Response;
 
 /*
  * PUT /channel/:id/contributor/roles
  */
-export type PutChannelContributorRolesResponse = {};
+export type PutChannelContributorRolesResponse = {} | Response;
 
 /*
  * PUT /channel/:id/admin/invite
  */
-export type PutChannelAdminInviteResponse = {};
+export type PutChannelAdminInviteResponse = {} | Response;
 
 /*
  * PUT /channel/:id/admin/settings
  */
-export type PutChannelAdminSettingsResponse = {};
+export type PutChannelAdminSettingsResponse = {} | Response;
 
 /*
  * PUT /channel/:id/moderator/invite
  */
-export type PutChannelModeratorInviteResponse = {};
+export type PutChannelModeratorInviteResponse = {} | Response;
 
 /*
  * PUT /channel/:id/moderator/settings
  */
-export type PutChannelModeratorSettingsResponse = {};
+export type PutChannelModeratorSettingsResponse = {} | Response;
 
 /*
  * DELETE /channel/:id
  */
-export type DeleteChannelResponse = {};
+export type DeleteChannelResponse = {} | Response;
 
 /*
  * DELETE /channel/:id/owner
  */
-export type DeleteChannelOwnerResponse = {};
+export type DeleteChannelOwnerResponse = {} | Response;
 
 /*
  * DELETE /channel/:id/collaborator
  */
-export type DeleteChannelCollaboratorResponse = {};
+export type DeleteChannelCollaboratorResponse = {} | Response;
 
 /*
  * DELETE /channel/:id/contributor
  */
-export type DeleteChannelContributorResponse = {};
+export type DeleteChannelContributorResponse = {} | Response;
 
 /*
  * DELETE /channel/:id/admin
  */
-export type DeleteChannelAdminResponse = {};
+export type DeleteChannelAdminResponse = {} | Response;
 
 /*
  * DELETE /channel/:id/moderator
  */
-export type DeleteChannelModeratorResponse = {};
+export type DeleteChannelModeratorResponse = {} | Response;
 
 /*
  * DELETE /channel/:id/owner/invite
  */
-export type DeleteChannelOwnerInviteResponse = {};
+export type DeleteChannelOwnerInviteResponse = {} | Response;
 
 /*
  * DELETE /channel/:id/collaborator/invite
  */
-export type DeleteChannelCollaboratorInviteResponse = {};
+export type DeleteChannelCollaboratorInviteResponse = {} | Response;
 
 /*
  * DELETE /channel/:id/contributor/invite
  */
-export type DeleteChannelContributorInviteResponse = {};
+export type DeleteChannelContributorInviteResponse = {} | Response;
 
 /*
  * DELETE /channel/:id/admin/invite
  */
-export type DeleteChannelAdminInviteResponse = {};
+export type DeleteChannelAdminInviteResponse = {} | Response;
 
 /*
  * DELETE /channel/:id/moderator/invite
  */
-export type DeleteChannelModeratorInviteResponse = {};
+export type DeleteChannelModeratorInviteResponse = {} | Response;
 
 //
 // Video Responses
@@ -374,42 +378,42 @@ export type DeleteChannelModeratorInviteResponse = {};
 /*
  * POST /video
  */
-export type PostVideoResponse = {};
+export type PostVideoResponse = {} | Response;
 
 /*
  * GET /video/:id
  */
-export type GetVideoResponse = Video;
+export type GetVideoResponse = Video | Response;
 
 /*
  * GET /video/:id/listing/related
  */
-export type GetVideoListingRelatedResponse = Array<Browsable>;
+export type GetVideoListingRelatedResponse = Array<Browsable> | Response;
 
 /*
  * PUT /video/:id
  */
-export type PutVideoResponse = {};
+export type PutVideoResponse = {} | Response;
 
 /*
  * PUT /video/:id/view
  */
-export type PutVideoViewResponse = {};
+export type PutVideoViewResponse = {} | Response;
 
 /*
  * PUT /video/:id/content
  */
-export type PutVideoContentResponse = {};
+export type PutVideoContentResponse = {} | Response;
 
 /*
  * PUT /video/:id/report
  */
-export type PutVideoReportResponse = {};
+export type PutVideoReportResponse = {} | Response;
 
 /*
  * DELETE /video/:id
  */
-export type DeleteVideoResponse = {};
+export type DeleteVideoResponse = {} | Response;
 
 //
 // Show Responses
@@ -418,37 +422,37 @@ export type DeleteVideoResponse = {};
 /*
  * POST /show
  */
-export type PostShowResponse = {};
+export type PostShowResponse = {} | Response;
 
 /*
  * POST /show/:id/episode
  */
-export type PostShowEpisodeResponse = {};
+export type PostShowEpisodeResponse = {} | Response;
 
 /*
  * GET /show/:id
  */
-export type GetShowResponse = Show;
+export type GetShowResponse = Show | Response;
 
 /*
  * PUT /show/:id
  */
-export type PutShowResponse = {};
+export type PutShowResponse = {} | Response;
 
 /*
  * PUT /show/:id/episode
  */
-export type PutShowEpisodeResponse = {};
+export type PutShowEpisodeResponse = {} | Response;
 
 /*
  * PUT /show/:id/content
  */
-export type PutShowContentResponse = {};
+export type PutShowContentResponse = {} | Response;
 
 /*
  * DELETE /show/:id
  */
-export type DeleteShowResponse = {};
+export type DeleteShowResponse = {} | Response;
 
 //
 // Playlist Responses
@@ -457,27 +461,27 @@ export type DeleteShowResponse = {};
 /*
  * POST /playlist
  */
-export type PostPlaylistResponse = {};
+export type PostPlaylistResponse = {} | Response;
 
 /*
  * GET /playlist/:id
  */
-export type GetPlaylistResponse = Playlist;
+export type GetPlaylistResponse = Playlist | Response;
 
 /*
  * PUT /playlist/:id
  */
-export type PutPlaylistResponse = {};
+export type PutPlaylistResponse = {} | Response;
 
 /*
  * DELETE /playlist/:id
  */
-export type DeletePlaylistResponse = {};
+export type DeletePlaylistResponse = {} | Response;
 
 /*
  * DELETE /playlist/:id/video
  */
-export type DeletePlaylistVideoResponse = {};
+export type DeletePlaylistVideoResponse = {} | Response;
 
 //
 // Listing Responses
@@ -486,14 +490,14 @@ export type DeletePlaylistVideoResponse = {};
 /*
  * GET /listing/featured/channels
  */
-export type GetListingFeaturedChannelsResponse = Array<Channel>;
+export type GetListingFeaturedChannelsResponse = Array<Channel> | Response;
 
 /*
  * GET /listing/videos/popular
  */
-export type GetListingPopularVideosResponse = Array<Browsable>;
+export type GetListingPopularVideosResponse = Array<Browsable> | Response;
 
 /*
  * GET /listing/videos/new
  */
-export type GetListingNewVideosResponse = Array<Browsable>;
+export type GetListingNewVideosResponse = Array<Browsable> | Response;
