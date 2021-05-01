@@ -1,5 +1,5 @@
 import {
-  Token,
+  EncodedToken,
   Channel,
   ChannelPublicInfo,
   ChannelPrivateInfo,
@@ -21,7 +21,7 @@ import { WestEggError } from "@lib/errors";
 // Base response type, nullable error
 // All other responses should extend this type
 export type Response = {
-  error?: WestEggError
+  error?: WestEggError;
 };
 
 //
@@ -31,7 +31,19 @@ export type Response = {
 /*
  * POST /auth/signup
  */
-export type PostAuthSignupResponse = { token: Token } | Response;
+export type PostAuthSignupResponse = {} | Response;
+
+/*
+ * GET /auth/user/:id/token
+ *
+ * This will come back as 200 OK no matter what, as to not indicate if the email the magic link was sent to exists or not.
+ */
+export type GetAuthUserTokenResponse = {} | Response;
+
+/*
+ * GET /auth/user/:id/refresh
+ */
+export type GetAuthUserRefreshTokenResponse = { token: EncodedToken } | Response;
 
 /*
  * GET /auth/user/:id/exists
@@ -90,7 +102,9 @@ export type GetUserListingRecommendedResponse = Array<Browsable> | Response;
 /*
  * GET /user/:id/listing/subscriptions
  */
-export type GetUserListingSubscriptionsResponse = Array<BrowsableVideo> | Response;
+export type GetUserListingSubscriptionsResponse =
+  | Array<BrowsableVideo>
+  | Response;
 
 /*
  * PUT /user/:id

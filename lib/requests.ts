@@ -39,6 +39,22 @@ export type PostAuthSignupRequest = Pick<
 >;
 
 /*
+ * GET /auth/user/:id/token
+ * Send a magic link to the user's email to get a valid JWT.
+ */
+export type GetAuthUserTokenRequest = {};
+
+/*
+ * GET /auth/user/:id/refresh
+ *
+ * Requires authentication.
+ *
+ * Use the current JWT to get a new JWT to prevent the current from expiring.
+ * On page load the frontend should send this request and set the new token from the response.
+ */
+export type GetAuthUserRefreshTokenRequest = {};
+
+/*
  * GET /auth/user/:id/exists
  */
 export type GetAuthUserExistsRequest = {};
@@ -250,7 +266,7 @@ export type GetChannelAccountRequest = {};
 /*
  * GET /channel/:id/public
  */
-export type GetChannePublicRequest = {};
+export type GetChannelPublicRequest = {};
 
 /*
  * GET /channel/:id/private
@@ -550,14 +566,14 @@ export type GetListingFeaturedChannelsRequest = {};
  * GET /listing/videos/popular
  */
 export type GetListingPopularVideosRequest = PagedRequest & {
-  topic?: Topic,
-  genre?: Genre,
+  topic?: Topic;
+  genre?: Genre;
 };
 
 /*
  * GET /listing/videos/new
  */
 export type GetListingNewVideosRequest = PagedRequest & {
-  topic?: Topic,
-  genre?: Genre,
+  topic?: Topic;
+  genre?: Genre;
 };

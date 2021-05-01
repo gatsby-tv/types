@@ -25,6 +25,8 @@ export type PagedRequest = {
 /*
  * Format of JWT used for authentication requests.
  *
+ * You will need to decoded an `EncodedToken` type to get this type.
+ *
  * Every JWT is sent via the Authorization HTTP header and signed
  * using a shared secret.
  *
@@ -37,6 +39,11 @@ export interface Token {
   readonly iat: Date;
   readonly exp: Date;
 }
+
+/*
+ * Encoded JWT, represented as a base64 string alias.
+ */
+export type EncodedToken = string;
 
 type Override<T, K> = Omit<T, keyof K> & K;
 
