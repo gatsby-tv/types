@@ -15,7 +15,6 @@ import {
   IEpisodicShow,
   IPlaylist,
 } from "@lib/entities";
-import { Topic } from "@lib/topic";
 
 export type PagedRequest = {
   page?: number;

@@ -24,6 +24,11 @@ export type Response = {
   error?: WestEggError;
 };
 
+// Response that should always return an error, used by westegg
+export type ErrorResponse = {
+  error: WestEggError;
+} | Response;
+
 //
 // Authentication Responses
 // --------------------------------------------------
@@ -48,7 +53,7 @@ export type GetAuthUserRefreshTokenResponse = { token: EncodedToken } | Response
 /*
  * GET /auth/user/:id/exists
  */
-export type GetAuthUserExistsResponse = {} | Response;
+export type GetAuthUserExistsResponse = {} | User | Response;
 
 /*
  * GET /auth/user/handle/:handle/exists

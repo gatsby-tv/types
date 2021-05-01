@@ -940,6 +940,12 @@
     "minimatch" "^3.0.4"
     "strip-json-comments" "^3.1.1"
 
+"@gatsby-tv/types@file:":
+  "resolved" "file:"
+  "version" "0.4.11"
+  dependencies:
+    "@gatsby-tv/types" "file:"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   "integrity" "sha512-bPHp6Ji8b41szTOcaP63VlnbbO5Ny6dwAATtY6JTjh5N2OLrb5Qk/Th5cRkRQhkWCt+EJsYrNB0MiL+Gpn6e3g=="
   "resolved" "https://registry.npmjs.org/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz"
