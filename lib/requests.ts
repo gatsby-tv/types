@@ -45,7 +45,7 @@ export type PostAuthSignupRequest = Pick<
 export type GetAuthUserTokenRequest = {};
 
 /*
- * GET /auth/user/:id/refresh
+ * GET /auth/user/:id/token/refresh
  *
  * Requires authorization.
  *
