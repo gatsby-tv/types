@@ -47,7 +47,7 @@ export type GetAuthUserTokenRequest = {};
 /*
  * GET /auth/user/:id/refresh
  *
- * Requires authentication.
+ * Requires authorization.
  *
  * Use the current JWT to get a new JWT to prevent the current from expiring.
  * On page load the frontend should send this request and set the new token from the response.
