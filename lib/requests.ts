@@ -9,6 +9,7 @@ import {
   ISeasonedShow,
   IEpisodicShow,
   IPlaylist,
+  IUserPrivateInfo,
 } from "@lib/entities";
 import { Report } from "@lib/report";
 import { Topic } from "@lib/topic";
@@ -26,38 +27,51 @@ import {
 // --------------------------------------------------
 
 /*
- * POST /auth/signup
+ * POST /auth/signin
  *
- * Requires authorization.
- *
- * Request to create a new user from the specified handle and display name.
- * In addition, the request allows for an avatar to be submitted via multipart/form-data.
+ * Send a magic link to the user's email to get a valid JWT.
  */
-export type PostAuthSignupRequest = Pick<
+export type PostAuthSigninRequest = Pick<IUserPrivateInfo, "email">;
+
+/*
+ * GET /auth/session/:key
+ *
+ * Get a session JWT to complete a signin from a magic link.
+ */
+export type GetAuthSessionRequest = { key: string };
+
+/*
+ * POST /auth/session/:key
+ */
+export type PostPersistSessionKeyRequestParams = { key: string };
+
+/*
+ * POST /auth/session/:key
+ */
+export type PostPersistSessionKeyRequest = {};
+
+/*
+ * POST /auth/signup/:key
+ *
+ * Same request as /auth/session/:key but include user signup properties.
+ *
+ * Request to finish creating a new user from the specified handle and display name.
+ * TODO: In addition, the request allows for an avatar to be submitted via multipart/form-data.
+ */
+export type PostAuthCompleteSignupRequest = Pick<
   IUserAccount,
-  "_id" | "handle" | "name"
+  "handle" | "name"
 >;
 
 /*
- * GET /auth/user/:id/token
- * Send a magic link to the user's email to get a valid JWT.
- */
-export type GetAuthUserTokenRequest = {};
-
-/*
- * GET /auth/user/:id/token/refresh
+ * GET /auth/signin/refresh
  *
  * Requires authorization.
  *
  * Use the current JWT to get a new JWT to prevent the current from expiring.
  * On page load the frontend should send this request and set the new token from the response.
  */
-export type GetAuthUserRefreshTokenRequest = {};
-
-/*
- * GET /auth/user/:id/exists
- */
-export type GetAuthUserExistsRequest = {};
+export type GetAuthSigninRefreshRequest = {};
 
 /*
  * GET /auth/user/handle/:handle/exists
@@ -84,51 +98,51 @@ export type GetUserAccountRequest = {
  * GET /user/:id/public
  */
 export type GetUserPublicRequest = {
-  id: UserID;
+  _id: UserID;
 };
 
 /*
  * GET /user/:id/private
  */
 export type GetUserPrivateRequest = {
-  id: UserID;
+  _id: UserID;
 };
 
 /*
  * GET /user/:id/feeds
  */
 export type GetUserFeedsRequest = {
-  id: UserID;
+  _id: UserID;
 };
 
 /*
  * GET /user/:id/history
  */
 export type GetUserHistoryRequest = {
-  id: UserID;
+  _id: UserID;
 };
 
 /*
  * GET /user/:id/promotions
  */
 export type GetUserPromotionsRequest = {
-  id: UserID;
+  _id: UserID;
 };
 
 /*
  * GET /user/:id/listing/recommended
  */
-export type GetUserListingRecommendedRequest = { id: UserID } | PagedRequest;
+export type GetUserListingRecommendedRequest = { _id: UserID } | PagedRequest;
 
 /*
  * GET /user/:id/listing/subscriptions
  */
-export type GetUserListingSubscriptionsRequest = { id: UserID } | PagedRequest;
+export type GetUserListingSubscriptionsRequest = { _id: UserID } | PagedRequest;
 
 /*
  * PUT /user/:id
  */
-export type PutUserRequestParams = { id: UserID };
+export type PutUserRequestParams = { _id: UserID };
 
 /*
  * PUT /user/:id
@@ -140,7 +154,7 @@ export type PutUserRequest = Partial<
 /*
  * PUT /user/:id/handle
  */
-export type PutUserHandleRequestParams = { id: UserID };
+export type PutUserHandleRequestParams = { _id: UserID };
 
 /*
  * PUT /user/:id/handle
@@ -150,7 +164,7 @@ export type PutUserHandleRequest = { handle: string };
 /*
  * PUT /user/:id/avatar
  */
-export type PutUserAvatarRequestParams = { id: UserID };
+export type PutUserAvatarRequestParams = { _id: UserID };
 
 /*
  * TODO: PUT /user/:id/avatar
@@ -160,7 +174,7 @@ export type PutUserAvatarRequest = {};
 /*
  * PUT /user/:id/banner
  */
-export type PutUserBannerRequestParams = { id: UserID };
+export type PutUserBannerRequestParams = { _id: UserID };
 
 /*
  * TODO: PUT /user/:id/banner
@@ -170,7 +184,7 @@ export type PutUserBannerRequest = {};
 /*
  * PUT /user/:id/subscription
  */
-export type PutUserSubscriptionRequestParams = { id: UserID };
+export type PutUserSubscriptionRequestParams = { _id: UserID };
 
 /*
  * PUT /user/:id/subscription
@@ -182,7 +196,7 @@ export type PutUserSubscriptionRequest = {
 /*
  * PUT /user/:id/follow
  */
-export type PutUserFollowingRequestParams = { id: UserID };
+export type PutUserFollowingRequestParams = { _id: UserID };
 
 /*
  * PUT /user/:id/follow
@@ -194,7 +208,7 @@ export type PutUserFollowingRequest = {
 /*
  * PUT /user/:id/history
  */
-export type PutUserHistoryRequestParams = { id: UserID };
+export type PutUserHistoryRequestParams = { _id: UserID };
 
 /*
  * PUT /user/:id/history
@@ -207,7 +221,7 @@ export type PutUserHistoryRequest = {
 /*
  * PUT /user/:id/promotion
  */
-export type PutUserPromotionRequestParams = { id: UserID };
+export type PutUserPromotionRequestParams = { _id: UserID };
 
 /*
  * PUT /user/:id/promotion
@@ -217,7 +231,7 @@ export type PutUserPromotionRequest = { video: VideoID };
 /*
  * PUT /user/:id/settings
  */
-export type PutUserSettingsRequestParams = { id: UserID };
+export type PutUserSettingsRequestParams = { _id: UserID };
 
 /*
  * PUT /user/:id/settings
@@ -227,7 +241,7 @@ export type PutUserSettingsRequest = { settings: Array<UserSettings> };
 /*
  * PUT /user/:id/owner/accept
  */
-export type PutUserOwnerAcceptRequestParams = { id: UserID };
+export type PutUserOwnerAcceptRequestParams = { _id: UserID };
 
 /*
  * PUT /user/:id/owner/accept
@@ -237,7 +251,7 @@ export type PutUserOwnerAcceptRequest = { channel: ChannelID };
 /*
  * PUT /user/:id/collaboration/accept
  */
-export type PutUserCollaborationAcceptRequestParams = { id: UserID };
+export type PutUserCollaborationAcceptRequestParams = { _id: UserID };
 
 /*
  * PUT /user/:id/collaboration/accept
@@ -247,7 +261,7 @@ export type PutUserCollaborationAcceptRequest = { channel: ChannelID };
 /*
  * PUT /user/:id/admin/accept
  */
-export type PutUserAdminAcceptRequestParams = { id: UserID };
+export type PutUserAdminAcceptRequestParams = { _id: UserID };
 
 /*
  * PUT /user/:id/admin/accept
@@ -257,7 +271,7 @@ export type PutUserAdminAcceptRequest = { channel: ChannelID };
 /*
  * PUT /user/:id/moderation/accept
  */
-export type PutUserModerationAcceptRequestParams = { id: UserID };
+export type PutUserModerationAcceptRequestParams = { _id: UserID };
 
 /*
  * PUT /user/:id/moderation/accept
@@ -267,7 +281,7 @@ export type PutUserModerationAcceptRequest = { channel: ChannelID };
 /*
  * DELETE /user/:id
  */
-export type DeleteUserRequestParams = { id: UserID };
+export type DeleteUserRequestParams = { _id: UserID };
 
 /*
  * DELETE /user/:id
@@ -277,7 +291,7 @@ export type DeleteUserRequest = {};
 /*
  * DELETE /user/:id/subscription
  */
-export type DeleteUserSubscriptionRequestParams = { id: UserID };
+export type DeleteUserSubscriptionRequestParams = { _id: UserID };
 
 /*
  * DELETE /user/:id/subscription
@@ -287,7 +301,7 @@ export type DeleteUserSubscriptionRequest = { channel: ChannelID };
 /*
  * DELETE /user/:id/follow
  */
-export type DeleteUserFollowRequestParams = { id: UserID };
+export type DeleteUserFollowRequestParams = { _id: UserID };
 
 /*
  * DELETE /user/:id/follow
@@ -297,7 +311,7 @@ export type DeleteUserFollowRequest = { follow: UserID };
 /*
  * DELETE /user/:id/history
  */
-export type DeleteUserHistoryRequestParams = { id: UserID };
+export type DeleteUserHistoryRequestParams = { _id: UserID };
 
 /*
  * DELETE /user/:id/history
@@ -307,7 +321,7 @@ export type DeleteUserHistoryRequest = { video: VideoID };
 /*
  * DELETE /user/:id/history/all
  */
-export type DeleteUserEntireHistoryRequestParams = { id: UserID };
+export type DeleteUserEntireHistoryRequestParams = { _id: UserID };
 
 /*
  * DELETE /user/:id/history/all
@@ -317,7 +331,7 @@ export type DeleteUserEntireHistoryRequest = {};
 /*
  * DELETE /user/:id/promotion
  */
-export type DeleteUserPromotionRequestParams = { id: UserID };
+export type DeleteUserPromotionRequestParams = { _id: UserID };
 
 /*
  * DELETE /user/:id/promotion
@@ -327,7 +341,7 @@ export type DeleteUserPromotionRequest = { video: VideoID };
 /*
  * DELETE /user/:id/collaboration
  */
-export type DeleteUserCollaborationRequestParams = { id: UserID };
+export type DeleteUserCollaborationRequestParams = { _id: UserID };
 
 /*
  * DELETE /user/:id/collaboration
@@ -337,7 +351,7 @@ export type DeleteUserCollaborationRequest = { channel: ChannelID };
 /*
  * DELETE /user/:id/admin
  */
-export type DeleteUserAdminRequestParams = { id: UserID };
+export type DeleteUserAdminRequestParams = { _id: UserID };
 
 /*
  * DELETE /user/:id/admin
@@ -347,7 +361,7 @@ export type DeleteUserAdminRequest = { channel: ChannelID };
 /*
  * DELETE /user/:id/moderator
  */
-export type DeleteUserModeratorRequestParams = { id: UserID };
+export type DeleteUserModeratorRequestParams = { _id: UserID };
 
 /*
  * DELETE /user/:id/moderator
@@ -357,7 +371,7 @@ export type DeleteUserModeratorRequest = { channel: ChannelID };
 /*
  * DELETE /user/:id/collaboration/invite
  */
-export type DeleteUserCollaborationInviteRequestParams = { id: UserID };
+export type DeleteUserCollaborationInviteRequestParams = { _id: UserID };
 
 /*
  * DELETE /user/:id/collaboration/invite
@@ -367,7 +381,7 @@ export type DeleteUserCollaborationInviteRequest = { channel: ChannelID };
 /*
  * DELETE /user/:id/admin/invite
  */
-export type DeleteUserAdminInviteRequestParams = { id: UserID };
+export type DeleteUserAdminInviteRequestParams = { _id: UserID };
 
 /*
  * DELETE /user/:id/admin/invite
@@ -377,7 +391,7 @@ export type DeleteUserAdminInviteRequest = { channel: ChannelID };
 /*
  * DELETE /user/:id/moderator/invite
  */
-export type DeleteUserModeratorInviteRequestParams = { id: UserID };
+export type DeleteUserModeratorInviteRequestParams = { _id: UserID };
 
 /*
  * DELETE /user/:id/moderator/invite

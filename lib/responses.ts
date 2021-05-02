@@ -34,26 +34,31 @@ export type ErrorResponse = {
 // --------------------------------------------------
 
 /*
- * POST /auth/signup
- */
-export type PostAuthSignupResponse = {} | Response;
-
-/*
- * GET /auth/user/:id/token
+ * POST /auth/signin
  *
- * This will come back as 200 OK no matter what, as to not indicate if the email the magic link was sent to exists or not.
+ * This will come back as 200 OK no matter what (barring no internal errors), as to not indicate if the email the magic link was sent to exists or not.
  */
-export type GetAuthUserTokenResponse = {} | Response;
+export type GetAuthSigninResponse = {} | Response;
 
 /*
- * GET /auth/user/:id/refresh
+ * GET /auth/session/:key
  */
-export type GetAuthUserRefreshTokenResponse = { token: EncodedToken } | Response;
+export type GetAuthSessionResponse = { token: EncodedToken } | Response;
 
 /*
- * GET /auth/user/:id/exists
+ * POST /auth/session/:key
  */
-export type GetAuthUserExistsResponse = {} | User | Response;
+export type PostPersistSessionKeyResponse = {} | Response;
+
+/*
+ * GET /auth/signup/:key
+ */
+export type PostAuthCompleteSignupResponse = { token: EncodedToken } | Response;
+
+/*
+ * GET /auth/signin/refresh
+ */
+export type GetAuthSigninRefreshResponse = { token: EncodedToken } | Response;
 
 /*
  * GET /auth/user/handle/:handle/exists
