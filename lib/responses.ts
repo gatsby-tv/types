@@ -38,7 +38,7 @@ export type ErrorResponse = {
  *
  * This will come back as 200 OK no matter what (barring no internal errors), as to not indicate if the email the magic link was sent to exists or not.
  */
-export type GetAuthSigninResponse = {} | Response;
+export type PostAuthSigninResponse = {} | Response;
 
 /*
  * GET /auth/session/:key
@@ -51,7 +51,7 @@ export type GetAuthSessionResponse = { token: EncodedToken } | Response;
 export type PostPersistSessionKeyResponse = {} | Response;
 
 /*
- * GET /auth/signup/:key
+ * POST /auth/signup/:key
  */
 export type PostAuthCompleteSignupResponse = { token: EncodedToken } | Response;
 
