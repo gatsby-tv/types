@@ -48,7 +48,7 @@ export type GetAuthSessionResponse = { token: EncodedToken } | Response;
 /*
  * POST /auth/session/:key
  */
-export type PostPersistSessionKeyResponse = {} | Response;
+export type PostAuthPersistSessionKeyResponse = {} | Response;
 
 /*
  * POST /auth/signup/:key
