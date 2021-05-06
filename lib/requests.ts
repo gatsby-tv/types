@@ -42,18 +42,8 @@ export type GetAuthSessionRequest = { key: string };
 
 /*
  * POST /auth/session/:key
- */
-export type PostAuthPersistSessionKeyRequestParams = { key: string };
-
-/*
- * POST /auth/session/:key
- */
-export type PostAuthPersistSessionKeyRequest = {};
-
-/*
- * POST /auth/signup/:key
  *
- * Same request as /auth/session/:key but include user signup properties.
+ * Same request as GET /auth/session/:key but include user signup properties.
  *
  * Request to finish creating a new user from the specified handle and display name.
  * TODO: In addition, the request allows for an avatar to be submitted via multipart/form-data.
@@ -62,6 +52,7 @@ export type PostAuthCompleteSignupRequest = Pick<
   IUserAccount,
   "handle" | "name"
 >;
+export type PostAuthCompleteSignupRequestParams = { key: string };
 
 /*
  * GET /auth/signin/refresh
@@ -72,6 +63,10 @@ export type PostAuthCompleteSignupRequest = Pick<
  * On page load the frontend should send this request and set the new token from the response.
  */
 export type GetAuthSigninRefreshRequest = {};
+
+/*
+ * TODO: POST /auth/session/:key/persist
+ */
 
 /*
  * GET /auth/user/handle/:handle/exists

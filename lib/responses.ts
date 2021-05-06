@@ -48,17 +48,16 @@ export type GetAuthSessionResponse = { token: EncodedToken } | Response;
 /*
  * POST /auth/session/:key
  */
-export type PostAuthPersistSessionKeyResponse = {} | Response;
-
-/*
- * POST /auth/signup/:key
- */
 export type PostAuthCompleteSignupResponse = { token: EncodedToken } | Response;
 
 /*
  * GET /auth/signin/refresh
  */
 export type GetAuthSigninRefreshResponse = { token: EncodedToken } | Response;
+
+/*
+ * TODO: POST /auth/session/:key/persist
+ */
 
 /*
  * GET /auth/user/handle/:handle/exists
