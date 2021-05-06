@@ -31,7 +31,7 @@ import {
  *
  * Send a magic link to the user's email to get a valid JWT.
  */
-export type PostAuthSigninRequest = Pick<IUserPrivateInfo, "email">;
+export type PostAuthSignInRequest = Pick<IUserPrivateInfo, "email">;
 
 /*
  * GET /auth/session/:key
@@ -48,11 +48,11 @@ export type GetAuthSessionRequest = { key: string };
  * Request to finish creating a new user from the specified handle and display name.
  * TODO: In addition, the request allows for an avatar to be submitted via multipart/form-data.
  */
-export type PostAuthCompleteSignupRequest = Pick<
+export type PostAuthCompleteSignUpRequest = Pick<
   IUserAccount,
   "handle" | "name"
 >;
-export type PostAuthCompleteSignupRequestParams = { key: string };
+export type PostAuthCompleteSignUpRequestParams = { key: string };
 
 /*
  * GET /auth/signin/refresh
@@ -62,7 +62,7 @@ export type PostAuthCompleteSignupRequestParams = { key: string };
  * Use the current JWT to get a new JWT to prevent the current from expiring.
  * On page load the frontend should send this request and set the new token from the response.
  */
-export type GetAuthSigninRefreshRequest = {};
+export type GetAuthSignInRefreshRequest = {};
 
 /*
  * TODO: POST /auth/session/:key/persist
