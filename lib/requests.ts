@@ -43,12 +43,12 @@ export type GetAuthSessionRequest = { key: string };
 /*
  * POST /auth/session/:key
  */
-export type PostPersistSessionKeyRequestParams = { key: string };
+export type PostAuthPersistSessionKeyRequestParams = { key: string };
 
 /*
  * POST /auth/session/:key
  */
-export type PostPersistSessionKeyRequest = {};
+export type PostAuthPersistSessionKeyRequest = {};
 
 /*
  * POST /auth/signup/:key
