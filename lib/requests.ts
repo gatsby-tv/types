@@ -14,7 +14,7 @@ import {
 import { Report } from "@lib/report";
 import { Topic } from "@lib/topic";
 import { Genre } from "@lib/genre";
-import { CID, ChannelID, UserID, VideoID } from "@lib/shared";
+import { CID, ChannelID, UserID, VideoID, SessionID } from "@lib/shared";
 import { AdminPermissions } from "@lib/permissions";
 import {
   UserSettings,
@@ -38,7 +38,7 @@ export type PostAuthSignInRequest = Pick<IUserPrivateInfo, "email">;
  *
  * Get a session JWT to complete a signin from a magic link.
  */
-export type GetAuthSessionRequest = { key: string };
+export type GetAuthSessionRequest = { key: SessionID };
 
 /*
  * POST /auth/session/:key
@@ -52,7 +52,7 @@ export type PostAuthCompleteSignUpRequest = Pick<
   IUserAccount,
   "handle" | "name"
 >;
-export type PostAuthCompleteSignUpRequestParams = { key: string };
+export type PostAuthCompleteSignUpRequestParams = { key: SessionID };
 
 /*
  * GET /auth/signin/refresh
@@ -65,8 +65,10 @@ export type PostAuthCompleteSignUpRequestParams = { key: string };
 export type GetAuthSignInRefreshRequest = {};
 
 /*
- * TODO: POST /auth/session/:key/persist
+ * POST /auth/session/:key/persist
  */
+export type PostAuthPersistSessionRequest = {};
+export type PostAuthPersistSessionRequestParams = { key: SessionID };
 
 /*
  * GET /auth/user/handle/:handle/exists

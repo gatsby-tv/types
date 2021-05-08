@@ -25,9 +25,11 @@ export type Response = {
 };
 
 // Response that should always return an error, used by westegg
-export type ErrorResponse = {
-  error: WestEggError;
-} | Response;
+export type ErrorResponse =
+  | {
+      error: WestEggError;
+    }
+  | Response;
 
 //
 // Authentication Responses
@@ -56,8 +58,11 @@ export type PostAuthCompleteSignUpResponse = { token: EncodedToken } | Response;
 export type GetAuthSignInRefreshResponse = { token: EncodedToken } | Response;
 
 /*
- * TODO: POST /auth/session/:key/persist
+ * POST /auth/session/:key/persist
+ *
+ * This response will always give a 200 OK even if the session doesn't exist as to not let the client know if a session exists or not.
  */
+export type PostAuthPersistSessionRequestResponse = {} | Response;
 
 /*
  * GET /auth/user/handle/:handle/exists

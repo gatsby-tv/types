@@ -66,8 +66,6 @@ export enum ErrorMessage {
   NO_BEARER_TOKEN_PREFIX = "NO_BEARER_TOKEN_PREFIX",
 
   // Email
-  EMAIL_IN_USE = "EMAIL_IN_USE",
-  EMAIL_OUT_OF_RANGE = "EMAIL_OUT_OF_RANGE",
   INVALID_EMAIL = "INVALID_EMAIL",
 
   // Session
