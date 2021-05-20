@@ -139,7 +139,7 @@ export type GetUserListingSubscriptionsRequest = { _id: UserID } | PagedRequest;
 /*
  * PUT /user/:id
  */
-export type PutUserRequestParams = { _id: UserID };
+export type PutUserRequestParams = { id: UserID };
 export type PutUserRequest = Partial<
   Pick<IUserAccount, "name" | "description">
 >;
@@ -147,25 +147,25 @@ export type PutUserRequest = Partial<
 /*
  * PUT /user/:id/handle
  */
-export type PutUserHandleRequestParams = { _id: UserID };
+export type PutUserHandleRequestParams = { id: UserID };
 export type PutUserHandleRequest = { handle: string };
 
 /*
  * PUT /user/:id/avatar
  */
-export type PutUserAvatarRequestParams = { _id: UserID };
+export type PutUserAvatarRequestParams = { id: UserID };
 export type PutUserAvatarRequest = {};
 
 /*
  * PUT /user/:id/banner
  */
-export type PutUserBannerRequestParams = { _id: UserID };
+export type PutUserBannerRequestParams = { id: UserID };
 export type PutUserBannerRequest = {};
 
 /*
  * PUT /user/:id/subscription
  */
-export type PutUserSubscriptionRequestParams = { _id: UserID };
+export type PutUserSubscriptionRequestParams = { id: UserID };
 export type PutUserSubscriptionRequest = {
   subscription: ChannelID;
 };
@@ -173,7 +173,7 @@ export type PutUserSubscriptionRequest = {
 /*
  * PUT /user/:id/follow
  */
-export type PutUserFollowingRequestParams = { _id: UserID };
+export type PutUserFollowingRequestParams = { id: UserID };
 export type PutUserFollowingRequest = {
   follow: UserID;
 };
@@ -181,7 +181,7 @@ export type PutUserFollowingRequest = {
 /*
  * PUT /user/:id/history
  */
-export type PutUserHistoryRequestParams = { _id: UserID };
+export type PutUserHistoryRequestParams = { id: UserID };
 export type PutUserHistoryRequest = {
   video: VideoID;
   bookmark: number;
@@ -190,109 +190,109 @@ export type PutUserHistoryRequest = {
 /*
  * PUT /user/:id/promotion
  */
-export type PutUserPromotionRequestParams = { _id: UserID };
+export type PutUserPromotionRequestParams = { id: UserID };
 export type PutUserPromotionRequest = { video: VideoID };
 
 /*
  * PUT /user/:id/settings
  */
-export type PutUserSettingsRequestParams = { _id: UserID };
+export type PutUserSettingsRequestParams = { id: UserID };
 export type PutUserSettingsRequest = { settings: Array<UserSettings> };
 
 /*
  * PUT /user/:id/owner/accept
  */
-export type PutUserOwnerAcceptRequestParams = { _id: UserID };
+export type PutUserOwnerAcceptRequestParams = { id: UserID };
 export type PutUserOwnerAcceptRequest = { channel: ChannelID };
 
 /*
  * PUT /user/:id/collaboration/accept
  */
-export type PutUserCollaborationAcceptRequestParams = { _id: UserID };
+export type PutUserCollaborationAcceptRequestParams = { id: UserID };
 export type PutUserCollaborationAcceptRequest = { channel: ChannelID };
 
 /*
  * PUT /user/:id/admin/accept
  */
-export type PutUserAdminAcceptRequestParams = { _id: UserID };
+export type PutUserAdminAcceptRequestParams = { id: UserID };
 export type PutUserAdminAcceptRequest = { channel: ChannelID };
 
 /*
  * PUT /user/:id/moderation/accept
  */
-export type PutUserModerationAcceptRequestParams = { _id: UserID };
+export type PutUserModerationAcceptRequestParams = { id: UserID };
 export type PutUserModerationAcceptRequest = { channel: ChannelID };
 
 /*
  * DELETE /user/:id
  */
-export type DeleteUserRequestParams = { _id: UserID };
+export type DeleteUserRequestParams = { id: UserID };
 export type DeleteUserRequest = {};
 
 /*
  * DELETE /user/:id/subscription
  */
-export type DeleteUserSubscriptionRequestParams = { _id: UserID };
+export type DeleteUserSubscriptionRequestParams = { id: UserID };
 export type DeleteUserSubscriptionRequest = { channel: ChannelID };
 
 /*
  * DELETE /user/:id/follow
  */
-export type DeleteUserFollowRequestParams = { _id: UserID };
+export type DeleteUserFollowRequestParams = { id: UserID };
 export type DeleteUserFollowRequest = { follow: UserID };
 
 /*
  * DELETE /user/:id/history
  */
-export type DeleteUserHistoryRequestParams = { _id: UserID };
+export type DeleteUserHistoryRequestParams = { id: UserID };
 export type DeleteUserHistoryRequest = { video: VideoID };
 
 /*
  * DELETE /user/:id/history/all
  */
-export type DeleteUserEntireHistoryRequestParams = { _id: UserID };
+export type DeleteUserEntireHistoryRequestParams = { id: UserID };
 export type DeleteUserEntireHistoryRequest = {};
 
 /*
  * DELETE /user/:id/promotion
  */
-export type DeleteUserPromotionRequestParams = { _id: UserID };
+export type DeleteUserPromotionRequestParams = { id: UserID };
 export type DeleteUserPromotionRequest = { video: VideoID };
 
 /*
  * DELETE /user/:id/collaboration
  */
-export type DeleteUserCollaborationRequestParams = { _id: UserID };
+export type DeleteUserCollaborationRequestParams = { id: UserID };
 export type DeleteUserCollaborationRequest = { channel: ChannelID };
 
 /*
  * DELETE /user/:id/admin
  */
-export type DeleteUserAdminRequestParams = { _id: UserID };
+export type DeleteUserAdminRequestParams = { id: UserID };
 export type DeleteUserAdminRequest = { channel: ChannelID };
 
 /*
  * DELETE /user/:id/moderator
  */
-export type DeleteUserModeratorRequestParams = { _id: UserID };
+export type DeleteUserModeratorRequestParams = { id: UserID };
 export type DeleteUserModeratorRequest = { channel: ChannelID };
 
 /*
  * DELETE /user/:id/collaboration/invite
  */
-export type DeleteUserCollaborationInviteRequestParams = { _id: UserID };
+export type DeleteUserCollaborationInviteRequestParams = { id: UserID };
 export type DeleteUserCollaborationInviteRequest = { channel: ChannelID };
 
 /*
  * DELETE /user/:id/admin/invite
  */
-export type DeleteUserAdminInviteRequestParams = { _id: UserID };
+export type DeleteUserAdminInviteRequestParams = { id: UserID };
 export type DeleteUserAdminInviteRequest = { channel: ChannelID };
 
 /*
  * DELETE /user/:id/moderator/invite
  */
-export type DeleteUserModeratorInviteRequestParams = { _id: UserID };
+export type DeleteUserModeratorInviteRequestParams = { id: UserID };
 export type DeleteUserModeratorInviteRequest = { channel: ChannelID };
 
 //
@@ -336,31 +336,31 @@ export type PutChannelRequest = Partial<
 /*
  * PUT /channel/:id/handle
  */
-export type PutChannelHandleRequestParams = { _id: string };
+export type PutChannelHandleRequestParams = { id: string };
 export type PutChannelHandleRequest = { handle: string };
 
 /*
  * PUT /channel/:id/avatar
  */
-export type PutChannelAvatarRequestParams = { _id: string };
+export type PutChannelAvatarRequestParams = { id: string };
 export type PutChannelAvatarRequest = {};
 
 /*
  * PUT /channel/:id/banner
  */
-export type PutChannelBannerRequestParams = { _id: string };
+export type PutChannelBannerRequestParams = { id: string };
 export type PutChannelBannerRequest = {};
 
 /*
  * PUT /channel/:id/poster
  */
-export type PutChannelPosterRequestParams = { _id: string };
+export type PutChannelPosterRequestParams = { id: string };
 export type PutChannelPosterRequest = {};
 
 /*
  * PUT /channel/:id/settings
  */
-export type PutChannelSettingsRequestParams = { _id: string };
+export type PutChannelSettingsRequestParams = { id: string };
 export type PutChannelSettingsRequest = { settings: Array<ChannelSettings> };
 
 /*
