@@ -67,12 +67,12 @@ export type PostAuthPersistSessionRequestResponse = {} | Response;
 /*
  * GET /auth/user/handle/:handle/exists
  */
-export type GetAuthUserHandleExistsResponse = {} | Response;
+export type GetAuthUserHandleExistsResponse = User | Response;
 
 /*
  * GET /auth/channel/handle/:handle/exists
  */
-export type GetAuthChannelHandleExistsResponse = {} | Response;
+export type GetAuthChannelHandleExistsResponse = Channel | Response;
 
 //
 // User Responses
@@ -128,22 +128,22 @@ export type PutUserResponse = {} | Response;
 /*
  * PUT /user/:id/handle
  */
-export type PutUserHandleResponse = {} | Response;
+export type PutUserHandleResponse = User | Response;
 
 /*
  * PUT /user/:id/avatar
  */
-export type PutUserAvatarResponse = {} | Response;
+export type PutUserAvatarResponse = User | Response;
 
 /*
  * PUT /user/:id/banner
  */
-export type PutUserBannerResponse = {} | Response;
+export type PutUserBannerResponse = User | Response;
 
 /*
  * PUT /user/:id/subscription
  */
-export type PutUserSubscriptionResponse = {} | Response;
+export type PutUserSubscriptionResponse = User | Response;
 
 /*
  * PUT /user/:id/follow
@@ -257,7 +257,7 @@ export type PutUserModeratorInviteResponse = {} | Response;
 /*
  * POST /channel
  */
-export type PostChannelResponse = {} | Response;
+export type PostChannelResponse = Channel | Response;
 
 /*
  * GET /channel/{:id,:handle}
@@ -292,17 +292,17 @@ export type PutChannelHandleResponse = {} | Response;
 /*
  * PUT /channel/:id/avatar
  */
-export type PutChannelAvatarResponse = {} | Response;
+export type PutChannelAvatarResponse = Channel | Response;
 
 /*
  * PUT /channel/:id/banner
  */
-export type PutChannelBannerResponse = {} | Response;
+export type PutChannelBannerResponse = Channel | Response;
 
 /*
  * PUT /channel/:id/poster
  */
-export type PutChannelPosterResponse = {} | Response;
+export type PutChannelPosterResponse = Channel | Response;
 
 /*
  * PUT /channel/:id/owner/invite
