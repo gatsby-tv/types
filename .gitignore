@@ -79,3 +79,4 @@ yarn-error.log
 .next/
 
 dist/
+package-lock.json

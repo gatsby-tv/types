@@ -22,6 +22,28 @@ import {
 } from "@lib/types";
 
 /*
+ * General Utilities
+ */
+
+export function omit(
+  data: Record<string, unknown>,
+  keys: string | string[]
+): Record<string, unknown> {
+  return Object.fromEntries(
+    Object.entries(data).filter((entry) => ![keys].flat().includes(entry[0]))
+  );
+}
+
+export function pick(
+  data: Record<string, unknown>,
+  keys: string | string[]
+): Record<string, unknown> {
+  return Object.fromEntries(
+    Object.entries(data).filter((entry) => [keys].flat().includes(entry[0]))
+  );
+}
+
+/*
  * Entity Utilities
  */
 
