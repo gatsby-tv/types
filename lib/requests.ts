@@ -95,46 +95,46 @@ export type GetUserAccountRequest = {
  * GET /user/:id/public
  */
 export type GetUserPublicRequest = {
-  _id: UserID;
+  id: UserID;
 };
 
 /*
  * GET /user/:id/private
  */
 export type GetUserPrivateRequest = {
-  _id: UserID;
+  id: UserID;
 };
 
 /*
  * GET /user/:id/feeds
  */
 export type GetUserFeedsRequest = {
-  _id: UserID;
+  id: UserID;
 };
 
 /*
  * GET /user/:id/history
  */
 export type GetUserHistoryRequest = {
-  _id: UserID;
+  id: UserID;
 };
 
 /*
  * GET /user/:id/promotions
  */
 export type GetUserPromotionsRequest = {
-  _id: UserID;
+  id: UserID;
 };
 
 /*
  * GET /user/:id/listing/recommended
  */
-export type GetUserListingRecommendedRequest = { _id: UserID } | PagedRequest;
+export type GetUserListingRecommendedRequest = { id: UserID } | PagedRequest;
 
 /*
  * GET /user/:id/listing/subscriptions
  */
-export type GetUserListingSubscriptionsRequest = { _id: UserID } | PagedRequest;
+export type GetUserListingSubscriptionsRequest = { id: UserID } | PagedRequest;
 
 /*
  * PUT /user/:id
@@ -324,7 +324,7 @@ export type GetChannelPrivateRequest = {};
 /*
  * GET /channel/:id/content
  */
-export type GetChannelContentRequest = { _id: ChannelID };
+export type GetChannelContentRequest = { id: ChannelID };
 
 /*
  * PUT /channel/:id
@@ -481,7 +481,7 @@ export type PostVideoRequest = Omit<
 /*
  * GET /video/:id
  */
-export type GetVideoRequest = { _id: string };
+export type GetVideoRequest = { id: string };
 
 /*
  * GET /video/:id/listing/related
