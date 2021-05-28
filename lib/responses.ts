@@ -66,8 +66,10 @@ export type PostAuthPersistSessionRequestResponse = {} | Response;
 
 /*
  * GET /auth/token/valid
+ *
+ * A 200 OK empty response means the token sent in the authorization bearer header is valid.
  */
-export type GetAuthTokenValidResponse = { valid: boolean } | Response;
+export type GetAuthTokenValidResponse = {} | Response;
 
 /*
  * POST /auth/token/invalidate
