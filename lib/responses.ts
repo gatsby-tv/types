@@ -65,6 +65,16 @@ export type GetAuthSignInRefreshResponse = { token: EncodedToken } | Response;
 export type PostAuthPersistSessionRequestResponse = {} | Response;
 
 /*
+ * GET /auth/token/valid
+ */
+export type GetAuthTokenValidResponse = { valid: boolean } | Response;
+
+/*
+ * POST /auth/token/invalidate
+ */
+export type PostAuthInvalidateAllPreviousTokensResponse = {} | Response;
+
+/*
  * GET /auth/user/handle/:handle/exists
  */
 export type GetAuthUserHandleExistsResponse = User | Response;

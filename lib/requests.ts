@@ -30,6 +30,7 @@ import {
  * POST /auth/signin
  *
  * Send a magic link to the user's email to get a valid JWT.
+ * This magic link should be formatted as `/magiclink?key=<session_key>&exist=<user_exists>`.
  */
 export type PostAuthSignInRequest = Pick<IUserPrivateInfo, "email">;
 
@@ -69,6 +70,21 @@ export type GetAuthSignInRefreshRequest = {};
  */
 export type PostAuthPersistSessionRequestParams = { key: SessionID };
 export type PostAuthPersistSessionRequest = {};
+
+/*
+ * GET /auth/token/valid
+ *
+ * Check the token set in the authorization bearer token header is valid.
+ */
+export type GetAuthTokenValidRequest = {};
+
+/*
+ * POST /auth/token/invalidate
+ *
+ * Invalidate all tokens issued for the user before the time this request is set.
+ */
+export type PostAuthInvalidateAllPreviousTokensRequestParams = {};
+export type PostAuthInvalidateAllPreviousTokensRequest = {};
 
 /*
  * GET /auth/user/handle/:handle/exists
