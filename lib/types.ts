@@ -35,8 +35,8 @@ export type PagedRequest = {
 export interface Token {
   readonly _id: string;
   readonly __v: number;
-  readonly iat: Date;
-  readonly exp: Date;
+  readonly iat: string;
+  readonly exp: string;
 }
 
 /*
