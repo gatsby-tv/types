@@ -57,7 +57,7 @@ export type PostAuthPersistSignInKeyRequestResponse = {} & Response;
 /*
  * GET /auth/token/refresh
  */
-export type GetAuthSignInRefreshResponse = { token: EncodedToken } & Response;
+export type GetAuthTokenRefreshResponse = { token: EncodedToken } & Response;
 
 /*
  * POST /auth/token/invalidate

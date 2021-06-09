@@ -55,7 +55,7 @@ export type PostAuthPersistSignInKeyRequest = {};
  * Use the current JWT to get a new JWT to prevent the current from expiring.
  * On page load the frontend should send this request and set the new token from the response.
  */
-export type GetAuthSignInRefreshRequest = {};
+export type GetAuthTokenRefreshRequest = {};
 
 /*
  * POST /auth/token/invalidate
