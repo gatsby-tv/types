@@ -14,7 +14,7 @@ import {
 import { Report } from "@lib/report";
 import { Topic } from "@lib/topic";
 import { Genre } from "@lib/genre";
-import { CID, ChannelID, UserID, VideoID, SessionID } from "@lib/shared";
+import { CID, ChannelID, UserID, VideoID, SigninKeyID } from "@lib/shared";
 import { AdminPermissions } from "@lib/permissions";
 import {
   UserSettings,
@@ -35,28 +35,20 @@ import {
 export type PostAuthSignInRequest = Pick<IUserPrivateInfo, "email">;
 
 /*
- * GET /auth/session/:key
+ * GET /auth/signin/:key
  *
- * Get a session JWT to complete a signin from a magic link.
+ * Get a JWT to complete a signin from a magic link.
  */
-export type GetAuthSessionRequest = { key: SessionID };
+export type GetAuthSigninKeyRequest = { key: SigninKeyID };
 
 /*
- * POST /auth/session/:key
- *
- * Same request as GET /auth/session/:key but include user signup properties.
- *
- * Request to finish creating a new user from the specified handle and display name.
- * TODO: In addition, the request allows for an avatar to be submitted via multipart/form-data.
+ * POST /auth/signin/:key/persist
  */
-export type PostAuthCompleteSignUpRequestParams = { key: SessionID };
-export type PostAuthCompleteSignUpRequest = Pick<
-  IUserAccount,
-  "handle" | "name"
->;
+export type PostAuthPersistSigninKeyRequestParams = { key: SigninKeyID };
+export type PostAuthPersistSigninKeyRequest = {};
 
 /*
- * GET /auth/signin/refresh
+ * GET /auth/token/refresh
  *
  * Requires authorization.
  *
@@ -66,19 +58,6 @@ export type PostAuthCompleteSignUpRequest = Pick<
 export type GetAuthSignInRefreshRequest = {};
 
 /*
- * POST /auth/session/:key/persist
- */
-export type PostAuthPersistSessionRequestParams = { key: SessionID };
-export type PostAuthPersistSessionRequest = {};
-
-/*
- * GET /auth/token/valid
- *
- * Check the token set in the authorization bearer token header is valid.
- */
-export type GetAuthTokenValidRequest = {};
-
-/*
  * POST /auth/token/invalidate
  *
  * Invalidate all tokens issued for the user before the time this request is set.
@@ -86,19 +65,23 @@ export type GetAuthTokenValidRequest = {};
 export type PostAuthInvalidateAllPreviousTokensRequestParams = {};
 export type PostAuthInvalidateAllPreviousTokensRequest = {};
 
-/*
- * GET /auth/user/handle/:handle/exists
- */
-export type GetAuthUserHandleExistsRequest = { handle: string };
-
-/*
- * GET /auth/channel/handle/:handle/exists
- */
-export type GetAuthChannelHandleExistsRequest = { handle: string };
-
 //
 // User Requests
 // --------------------------------------------------
+
+/*
+ * POST /user
+ *
+ * Request to finish creating a new user from the specified handle and display name. Requires a signin key from a magic link (sent by email).
+ * TODO: In addition, the request allows for an avatar to be submitted via multipart/form-data.
+ */
+export type PostUserCompleteSignupRequestParams = {};
+export type PostUserCompleteSignupRequest = Pick<
+  IUserAccount,
+  "handle" | "name"
+> & {
+  key: SigninKeyID;
+};
 
 /*
  * GET /user/{:id,:handle}
@@ -106,6 +89,11 @@ export type GetAuthChannelHandleExistsRequest = { handle: string };
 export type GetUserAccountRequest = {
   unique: UserID | string;
 };
+
+/*
+ * GET /user/:handle/exists
+ */
+export type GetUserHandleExistsRequest = { handle: string };
 
 /*
  * GET /user/:id/public
@@ -145,12 +133,12 @@ export type GetUserPromotionsRequest = {
 /*
  * GET /user/:id/listing/recommended
  */
-export type GetUserListingRecommendedRequest = { id: UserID } | PagedRequest;
+export type GetUserListingRecommendedRequest = { id: UserID } & PagedRequest;
 
 /*
  * GET /user/:id/listing/subscriptions
  */
-export type GetUserListingSubscriptionsRequest = { id: UserID } | PagedRequest;
+export type GetUserListingSubscriptionsRequest = { id: UserID } & PagedRequest;
 
 /*
  * PUT /user/:id
@@ -326,6 +314,11 @@ export type PostChannelRequest = Pick<IChannelAccount, "handle" | "name"> & {
  * GET /channel/{:id,:handle}
  */
 export type GetChannelAccountRequest = { unique: string };
+
+/*
+ * GET /channel/:handle/exists
+ */
+export type GetChannelHandleExistsRequest = { handle: string };
 
 /*
  * GET /channel/:id/public
