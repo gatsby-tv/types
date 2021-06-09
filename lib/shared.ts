@@ -8,7 +8,7 @@ import { Genre } from "@lib/genre";
  * distinguishing what kind of object the ID refers to.
  */
 export type ObjectID = string;
-export type SigninKeyID = ObjectID;
+export type SignInKeyID = ObjectID;
 export type UserID = ObjectID;
 export type ChannelID = ObjectID;
 export type VideoID = ObjectID;

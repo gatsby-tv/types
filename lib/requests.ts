@@ -14,7 +14,7 @@ import {
 import { Report } from "@lib/report";
 import { Topic } from "@lib/topic";
 import { Genre } from "@lib/genre";
-import { CID, ChannelID, UserID, VideoID, SigninKeyID } from "@lib/shared";
+import { CID, ChannelID, UserID, VideoID, SignInKeyID } from "@lib/shared";
 import { AdminPermissions } from "@lib/permissions";
 import {
   UserSettings,
@@ -30,7 +30,7 @@ import {
  * POST /auth/signin
  *
  * Send a magic link to the user's email to get a valid JWT.
- * This magic link should be formatted as `/magiclink?key=<session_key>&exist=<user_exists>`.
+ * This magic link should be formatted as `/magiclink?key=<signin_key>&exist=<user_exists>`.
  */
 export type PostAuthSignInRequest = Pick<IUserPrivateInfo, "email">;
 
@@ -39,13 +39,13 @@ export type PostAuthSignInRequest = Pick<IUserPrivateInfo, "email">;
  *
  * Get a JWT to complete a signin from a magic link.
  */
-export type GetAuthSigninKeyRequest = { key: SigninKeyID };
+export type GetAuthSignInKeyRequest = { key: SignInKeyID };
 
 /*
  * POST /auth/signin/:key/persist
  */
-export type PostAuthPersistSigninKeyRequestParams = { key: SigninKeyID };
-export type PostAuthPersistSigninKeyRequest = {};
+export type PostAuthPersistSignInKeyRequestParams = { key: SignInKeyID };
+export type PostAuthPersistSignInKeyRequest = {};
 
 /*
  * GET /auth/token/refresh
@@ -80,7 +80,7 @@ export type PostUserCompleteSignupRequest = Pick<
   IUserAccount,
   "handle" | "name"
 > & {
-  key: SigninKeyID;
+  key: SignInKeyID;
 };
 
 /*

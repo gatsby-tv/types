@@ -43,57 +43,45 @@ export type ErrorResponse =
 export type PostAuthSignInResponse = {} & Response;
 
 /*
- * GET /auth/session/:key
+ * GET /auth/signin/:key
  */
-export type GetAuthSessionResponse = { token: EncodedToken } & Response;
+export type GetAuthSignInKeyResponse = { token: EncodedToken } & Response;
 
 /*
- * POST /auth/session/:key
+ * POST /auth/signin/:key/persist
+ *
+ * This response will always give a 200 OK even if the signin key doesn't exist as to not let the client know if a signin key exists or not.
  */
-export type PostAuthCompleteSignUpResponse = { token: EncodedToken } & Response;
+export type PostAuthPersistSignInKeyRequestResponse = {} & Response;
 
 /*
- * GET /auth/signin/refresh
+ * GET /auth/token/refresh
  */
 export type GetAuthSignInRefreshResponse = { token: EncodedToken } & Response;
-
-/*
- * POST /auth/session/:key/persist
- *
- * This response will always give a 200 OK even if the session doesn't exist as to not let the client know if a session exists or not.
- */
-export type PostAuthPersistSessionRequestResponse = {} & Response;
-
-/*
- * GET /auth/token/valid
- *
- * A 200 OK empty response means the token sent in the authorization bearer header is valid.
- */
-export type GetAuthTokenValidResponse = {} & Response;
 
 /*
  * POST /auth/token/invalidate
  */
 export type PostAuthInvalidateAllPreviousTokensResponse = {} & Response;
 
-/*
- * GET /auth/user/handle/:handle/exists
- */
-export type GetAuthUserHandleExistsResponse = User & Response;
-
-/*
- * GET /auth/channel/handle/:handle/exists
- */
-export type GetAuthChannelHandleExistsResponse = Channel & Response;
-
 //
 // User Responses
 // --------------------------------------------------
 
 /*
+ * POST /user
+ */
+export type PostAuthCompleteSignUpResponse = { token: EncodedToken } & Response;
+
+/*
  * GET /user/{:id,:handle}
  */
 export type GetUserAccountResponse = User & Response;
+
+/*
+ * GET /user/:handle/exists
+ */
+export type GetUserHandleExistsResponse = User & Response;
 
 /*
  * GET /user/:id/public
@@ -275,6 +263,11 @@ export type PostChannelResponse = Channel & Response;
  * GET /channel/{:id,:handle}
  */
 export type GetChannelAccountResponse = Channel & Response;
+
+/*
+ * GET /channel/:handle/exists
+ */
+export type GetChannelHandleExistsResponse = Channel & Response;
 
 /*
  * GET /channel/:id/public
