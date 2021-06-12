@@ -28,7 +28,7 @@ import {
 export function omit(
   data: Record<string, unknown>,
   keys: string | string[]
-): Record<string, unknown> {
+): Record<string, any> {
   return Object.fromEntries(
     Object.entries(data).filter((entry) => ![keys].flat().includes(entry[0]))
   );
@@ -37,7 +37,7 @@ export function omit(
 export function pick(
   data: Record<string, unknown>,
   keys: string | string[]
-): Record<string, unknown> {
+): Record<string, any> {
   return Object.fromEntries(
     Object.entries(data).filter((entry) => [keys].flat().includes(entry[0]))
   );
