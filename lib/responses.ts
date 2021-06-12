@@ -52,7 +52,7 @@ export type GetAuthSignInKeyResponse = { token: EncodedToken } & Response;
  *
  * This response will always give a 200 OK even if the signin key doesn't exist as to not let the client know if a signin key exists or not.
  */
-export type PostAuthPersistSignInKeyRequestResponse = {} & Response;
+export type PostAuthPersistSignInKeyResponse = {} & Response;
 
 /*
  * GET /auth/token/refresh
