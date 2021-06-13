@@ -92,4 +92,8 @@ export enum ErrorMessage {
 
   // Tokens
   TOKEN_EXPIRED = "TOKEN_EXPIRED",
+
+  // Files
+  INVALID_FILE_SIZE = "INVALID_FILE_SIZE",
+  INVALID_FILE_TYPE = "INVALID_FILE_TYPE"
 }
