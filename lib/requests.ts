@@ -514,7 +514,7 @@ export type PutVideoViewRequest = {};
  */
 export type PutVideoContentRequest = {
   duration: number;
-  content: CID | Array<CID>;
+  content: CID;
 };
 
 /*
