@@ -527,7 +527,9 @@ export type PutVideoReportRequest = {
 /*
  * DELETE /video/:id
  */
-export type DeleteVideoRequest = {};
+export type DeleteVideoRequest = {
+  id: VideoID
+};
 
 //
 // Show Requests
