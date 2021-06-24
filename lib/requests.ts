@@ -500,6 +500,7 @@ export type GetVideoListingRelatedRequest = PagedRequest;
 /*
  * PUT /video/:id
  */
+export type PutVideoRequestParams = { id: VideoID };
 export type PutVideoRequest = Partial<
   Omit<IVideo, "_id" | "releaseDate" | "content" | "views" | "channel">
 >;
@@ -507,6 +508,7 @@ export type PutVideoRequest = Partial<
 /*
  * PUT /video/:id/view
  */
+export type PutVideoViewRequestParams = { id: VideoID };
 export type PutVideoViewRequest = {};
 
 /*
