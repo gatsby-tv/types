@@ -69,6 +69,7 @@ export enum ErrorMessage {
 
   // Email
   INVALID_EMAIL = "INVALID_EMAIL",
+  EMAIL_IN_USE = "EMAIL_IN_USE",
 
   // Handle
   HANDLE_OUT_OF_RANGE = "HANDLE_OUT_OF_RANGE",
