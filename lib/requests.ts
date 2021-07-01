@@ -145,14 +145,8 @@ export type GetUserListingSubscriptionsRequest = { id: UserID } & PagedRequest;
  */
 export type PutUserRequestParams = { id: UserID };
 export type PutUserRequest = Partial<
-  Pick<IUserAccount, "name" | "description">
+  Pick<IUserAccount, "name" | "handle" | "description">
 >;
-
-/*
- * PUT /user/:id/handle
- */
-export type PutUserHandleRequestParams = { id: UserID };
-export type PutUserHandleRequest = { handle: string };
 
 /*
  * PUT /user/:id/avatar

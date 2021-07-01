@@ -118,11 +118,6 @@ export type GetUserListingSubscriptionsResponse = Response<Array<BrowsableVideo>
 export type PutUserResponse = Response;
 
 /*
- * PUT /user/:id/handle
- */
-export type PutUserHandleResponse = Response<User>;
-
-/*
  * PUT /user/:id/avatar
  */
 export type PutUserAvatarResponse = Response<User>;
