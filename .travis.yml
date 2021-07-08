@@ -1,5 +1,5 @@
 language: node_js
-node_js: 12.18.3
+node_js: 14.15.4
 services: docker
 
 stages:
@@ -26,4 +26,4 @@ jobs:
         # Build the npm repo
         - make build
         # Push to npm
-        - make push
+        - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; make push; fi
