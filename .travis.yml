@@ -20,7 +20,7 @@ jobs:
         - make check
     # Build and publish to npm
     - stage: publish
-      if: branch == master AND (NOT (type IN (push, pull_request)))
+      if: branch == master AND (NOT (type IN (pull_request)))
       before_script:
         - npm set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
       script:
