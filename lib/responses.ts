@@ -39,14 +39,14 @@ export type PostAuthSignInResponse = Response;
 /*
  * GET /auth/signin/:key
  */
-export type GetAuthSignInKeyResponse = Response<{ token: EncodedToken }>; 
+export type GetAuthSignInKeyResponse = Response<{ token: EncodedToken }>;
 
 /*
  * POST /auth/signin/:key/persist
  *
  * This response will always give a 200 OK even if the signin key doesn't exist as to not let the client know if a signin key exists or not.
  */
-export type PostAuthPersistSignInKeyResponse = Response
+export type PostAuthPersistSignInKeyResponse = Response;
 
 /*
  * GET /auth/token/refresh
@@ -110,7 +110,9 @@ export type GetUserListingRecommendedResponse = Response<Array<Browsable>>;
 /*
  * GET /user/:id/listing/subscriptions
  */
-export type GetUserListingSubscriptionsResponse = Response<Array<BrowsableVideo>>;
+export type GetUserListingSubscriptionsResponse = Response<
+  Array<BrowsableVideo>
+>;
 
 /*
  * PUT /user/:id

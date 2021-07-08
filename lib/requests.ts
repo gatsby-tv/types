@@ -524,7 +524,7 @@ export type PutVideoReportRequest = {
  * DELETE /video/:id
  */
 export type DeleteVideoRequest = {
-  id: VideoID
+  id: VideoID;
 };
 
 //

@@ -1,0 +1,29 @@
+language: node_js
+node_js: 12.18.3
+services: docker
+
+stages:
+  - build
+  - publish
+
+branches:
+  only:
+  - master
+
+jobs:
+  include:
+    # Check prettier linting and build typescript
+    # Check the current version is different than the published
+    - stage: build
+      script:
+        - make build
+        - make check
+    # Build and publish to npm
+    - stage: publish
+      before_script:
+        - npm set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
+      script:
+        # Build the npm repo
+        - make build
+        # Push to npm
+        - make push

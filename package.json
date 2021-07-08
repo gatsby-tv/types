@@ -15,7 +15,9 @@
     "types": "tsc --noEmit",
     "types:watch": "yarn run check -- --watch",
     "clean": "rm -rf dist",
-    "build": "yarn run build:tsc && yarn run build:babel",
+    "format:check": "prettier --check \"./lib/**/*.ts\"",
+    "format:write": "prettier --write \"./lib/**/*.ts\"",
+    "build": "yarn format:write && yarn run build:tsc && yarn run build:babel",
     "build:tsc": "tsc --emitDeclarationOnly && tscpaths -p tsconfig.json -s lib -o dist",
     "build:babel": "babel lib --out-dir dist --extensions \".ts,.tsx\" --source-maps inline"
   },
